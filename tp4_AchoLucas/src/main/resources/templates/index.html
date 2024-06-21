@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head data-th-replace="~{/layouts/header :: head}">
+
+</head>
+<body>
+
+<div data-th-replace="~{/layouts/header :: header}"></div>
+
+  <div class="wrapper">
+        <aside class="sidebar col-lg-2 col-md-4 d-none d-md-block">
+            <h5>Menú</h5>
+            <a href="#">Biblioteca</a>
+            <a href="#">Calendario Académico</a>
+            <a href="#">Departamentos</a>
+            <a href="#">Investigación</a>
+            <a href="#">Contacto</a>
+        </aside>
+        <main class="content col-lg-9 col-md-8 col-12">
+            <section class="mb-5">
+                <h2>Sobre la Facultad de Ingeniería</h2>
+                <p>La Facultad de Ingeniería de la UNJu se dedica a formar profesionales altamente capacitados en diversas áreas de la ingeniería. Contamos con un equipo docente de primera línea y ofrecemos programas académicos de excelencia.</p>
+            </section>
+            <section>
+                <h2>Noticias Recientes</h2>
+                <div class="news-item">
+                    <h5>Conferencia sobre Energías Renovables</h5>
+                    <p>El próximo jueves, se llevará a cabo una conferencia sobre energías renovables en el auditorio principal. Los interesados pueden inscribirse en la secretaría de la facultad.</p>
+                </div>
+                <div class="news-item">
+                    <h5>Nuevo Laboratorio de Robótica</h5>
+                    <p>Se ha inaugurado un nuevo laboratorio de robótica con equipos de última generación para los estudiantes de ingeniería electrónica.</p>
+                </div>
+                <div class="news-item">
+                    <h5>Proyecto de Investigación en Inteligencia Artificial</h5>
+                    <p>La facultad ha iniciado un nuevo proyecto de investigación en inteligencia artificial en colaboración con universidades internacionales.</p>
+                </div>
+            </section>
+        </main>
+     
+    </div>
+
+<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+
+
+
+<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
