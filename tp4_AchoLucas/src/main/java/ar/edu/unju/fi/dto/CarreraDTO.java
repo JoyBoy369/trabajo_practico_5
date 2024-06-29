@@ -1,4 +1,4 @@
-package ar.edu.unju.fi.model;
+package ar.edu.unju.fi.dto;
 
 import org.springframework.stereotype.Component;
 
@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Component
-public class Carrera {
-    private int codigo;
+public class CarreraDTO {
+    private String codigo;
     private String nombre;
-    private int cantidadAnios;
-    private boolean estado;
+    private String cantidadAnios;
+    private String estado;
 
 }
