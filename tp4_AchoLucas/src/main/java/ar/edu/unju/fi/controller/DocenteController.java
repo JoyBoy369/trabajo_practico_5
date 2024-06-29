@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
-import ar.edu.unju.fi.collections.CollectionDocente;
+import ar.edu.unju.fi.service.imp.DocenteServiceImp;
 
 import ar.edu.unju.fi.model.Docente;
 
@@ -20,12 +19,12 @@ import ar.edu.unju.fi.model.Docente;
 public class DocenteController {
 
 	@Autowired
-	Docente docente;
+	private DocenteServiceImp docenteServiceImp;
 	
 	@GetMapping("/listado")
 	public String getDocentesList(Model model) {
 		
-		model.addAttribute("docentes",CollectionDocente.getDocentes());
+		model.addAttribute("docentes", docenteServiceImp.getDocentes());
 		model.addAttribute("titulo","Docentes");
 		
 		return "docentes";
@@ -35,6 +34,7 @@ public class DocenteController {
 	public String getNuevoDocentePage(Model model) {
 		
 		boolean editar = false;
+		Docente docente = new Docente();
 		model.addAttribute("docente",docente);
 		model.addAttribute("editar",editar);
 		model.addAttribute("titulo","Nuevo docente");
@@ -46,9 +46,8 @@ public class DocenteController {
 	public ModelAndView guardarDocente(@ModelAttribute("docente") Docente docente) {
 		
 		ModelAndView modelView = new ModelAndView("docentes");
-		
-		CollectionDocente.agregarDocente(docente);
-		modelView.addObject("docentes",CollectionDocente.getDocentes());
+		docenteServiceImp.agregarDocente(docente);
+		modelView.addObject("docentes",docenteServiceImp.getDocentes());
 		
 		return modelView;
 	}
@@ -58,7 +57,7 @@ public class DocenteController {
 		
 		boolean editar = true;
 		Docente docenteEncontrado = new Docente();
-		docenteEncontrado = CollectionDocente.buscarDocente(legajo);
+		docenteEncontrado = docenteServiceImp.buscarDocente(legajo);
 		model.addAttribute("editar", editar);
 		model.addAttribute("docente", docenteEncontrado);
 		model.addAttribute("titulo", "Modificar Docente");		
@@ -69,7 +68,7 @@ public class DocenteController {
 	@PostMapping("/modificar")
 	public String modificarDocente(@ModelAttribute("docente") Docente docente) {
 		
-		CollectionDocente.modificarDocente(docente);
+		docenteServiceImp.modificarDocente(docente);
 		
 		return "redirect:/docente/listado";
 	}
@@ -77,7 +76,7 @@ public class DocenteController {
 	@GetMapping("/eliminar/{legajo}")
 	public String eliminarDocente(@PathVariable(value="legajo") int legajo) {
 		
-		CollectionDocente.eliminarDocente(legajo);
+		docenteServiceImp.eliminarDocente(legajo);
 		
 		return "redirect:/docente/listado";
 		
