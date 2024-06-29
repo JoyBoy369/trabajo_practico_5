@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,28 +13,27 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.collections.CollectionCarrera;
 import ar.edu.unju.fi.collections.CollectionDocente;
-import ar.edu.unju.fi.collections.CollectionMateria;
-import ar.edu.unju.fi.model.Carrera;
-import ar.edu.unju.fi.model.Docente;
-import ar.edu.unju.fi.model.Materia;
+
+import ar.edu.unju.fi.dto.MateriaDTO;
+import ar.edu.unju.fi.service.IMateriaService;
 
 @Controller
 @RequestMapping("/materia")
 public class MateriaController {
 	
 	@Autowired
-	private Materia materia;
+	@Qualifier("materiaServiceImp")
+	private IMateriaService materiaService;
 	
 	@Autowired
-	private Docente docente;
+	private MateriaDTO materiaDTO;
 	
-	@Autowired
-	private Carrera carrera;
+	
 		
 	@GetMapping("/listado")
 	public String getMateriasList(Model model) {
 		
-		model.addAttribute("materias",CollectionMateria.getMaterias());
+		model.addAttribute("materias",materiaService.findAll());
 		model.addAttribute("titulo","Materias");
 		
 		return "materias";
@@ -43,8 +43,8 @@ public class MateriaController {
 	public String getNuevaMateriaPage(Model model) {
 		
 		boolean editar = false;
-		model.addAttribute("materia",materia);
-		model.addAttribute("docentes",CollectionDocente.getDocentes());
+		model.addAttribute("materia",materiaDTO);
+		model.addAttribute("docentes",CollectionDocente.getDocentes()); //Cuando este el service, cambiar //
 		model.addAttribute("carreras",CollectionCarrera.getCarreras());
 		model.addAttribute("editar",editar);
 		model.addAttribute("titulo","Nueva materia");
@@ -53,17 +53,12 @@ public class MateriaController {
 	}
 	
 	@PostMapping("/guardar")
-	public ModelAndView guardarMateria(@ModelAttribute("materia") Materia materia) {
-		
-		docente = CollectionDocente.buscarDocente(materia.getDocente().getLegajo());
-		carrera = CollectionCarrera.buscarCarrera(materia.getCarrera().getCodigo());
-		materia.setDocente(docente);
-		materia.setCarrera(carrera);
-		
-		
+	public ModelAndView guardarMateria(@ModelAttribute("materia") MateriaDTO materiaDTO) {
+	
 		ModelAndView modelView = new ModelAndView("materias");
-		CollectionMateria.agregarMateria(materia);
-		modelView.addObject("materias",CollectionMateria.getMaterias());
+		materiaService.save(materiaDTO);
+	
+		modelView.addObject("materias",materiaService.findAll());
 		return modelView;
 	}
 	
@@ -71,10 +66,10 @@ public class MateriaController {
 	public String getEditarMateria(Model model,@PathVariable(value="codigo")int codigo) {
 		
 		boolean editar = true;
-		Materia materiaEncontrada = new Materia();
-		materiaEncontrada = CollectionMateria.buscarMateria(codigo);
+		MateriaDTO materiaEncontradaDTO = materiaService.findByCodigo(codigo);
+	
 		model.addAttribute("editar", editar);
-		model.addAttribute("materia", materiaEncontrada);
+		model.addAttribute("materia", materiaEncontradaDTO);
 		model.addAttribute("docentes",CollectionDocente.getDocentes());
 		model.addAttribute("carreras",CollectionCarrera.getCarreras());
 		model.addAttribute("titulo", "Modificar Carrera");		
@@ -83,14 +78,11 @@ public class MateriaController {
 	}
 	
 	@PostMapping("/modificar")
-	public String modificarMateria(@ModelAttribute("materia") Materia materia) {
+	public String modificarMateria(@ModelAttribute("materia") MateriaDTO materiaDTO) {
 		
-		docente = CollectionDocente.buscarDocente(materia.getDocente().getLegajo());
-		carrera = CollectionCarrera.buscarCarrera(materia.getCarrera().getCodigo());
-		materia.setDocente(docente);
-		materia.setCarrera(carrera);
 		
-		CollectionMateria.modificarMateria(materia);
+		materiaService.edit(materiaDTO);
+	
 		
 		return "redirect:/materia/listado";
 	}
@@ -98,7 +90,7 @@ public class MateriaController {
 	@GetMapping("/eliminar/{codigo}")
 	public String eliminarCarrera(@PathVariable(value="codigo") int codigo) {
 		
-		CollectionMateria.eliminarMateria(codigo);
+		materiaService.deleteByCodigo(codigo);
 		
 		return "redirect:/materia/listado";
 		
