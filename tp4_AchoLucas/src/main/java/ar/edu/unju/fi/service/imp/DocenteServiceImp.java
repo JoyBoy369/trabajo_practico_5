@@ -37,13 +37,18 @@ public class DocenteServiceImp implements IDocenteService{
 	public List<DocenteDTO> getDocentes(){
 		if(docentes.isEmpty()) {
 			
-		 	docentes.add(new Docente(1001, "Juan", "Pérez", "juan.perez@gmail.com", "123456789"));
-	        docentes.add(new Docente(1002, "Ana", "García", "ana.garcia@hotmail.com", "987654321"));
-	        docentes.add(new Docente(1003, "Luis", "Martínez", "luis.martinez@gmail.com", "123123123"));
-	        docentes.add(new Docente(1004, "María", "López", "maria.lopez@gmail.com", "456789123"));
-	        docentes.add(new Docente(1005, "Pedro", "Sánchez", "pedro.sanchez@gmail.com", "789456123"));
-	        docentes.add(new Docente(1006, "Laura", "Gómez", "laura.gomez@gmail.com", "321654987"));
-	        docentes.add(new Docente(1007, "Carlos", "Fernández", "carlos.fernandez@gmail.com", "654987321"));
+			/*
+			 * docentes.add(new Docente(1001, "Juan", "Pérez", "juan.perez@gmail.com",
+			 * "123456789")); docentes.add(new Docente(1002, "Ana", "García",
+			 * "ana.garcia@hotmail.com", "987654321")); docentes.add(new Docente(1003,
+			 * "Luis", "Martínez", "luis.martinez@gmail.com", "123123123"));
+			 * docentes.add(new Docente(1004, "María", "López", "maria.lopez@gmail.com",
+			 * "456789123")); docentes.add(new Docente(1005, "Pedro", "Sánchez",
+			 * "pedro.sanchez@gmail.com", "789456123")); docentes.add(new Docente(1006,
+			 * "Laura", "Gómez", "laura.gomez@gmail.com", "321654987")); docentes.add(new
+			 * Docente(1007, "Carlos", "Fernández", "carlos.fernandez@gmail.com",
+			 * "654987321"));
+			 */
 		
 		}
 	List<DocenteDTO> docentesDTO = docenteMapper.toDocenteDTOList(docentes);

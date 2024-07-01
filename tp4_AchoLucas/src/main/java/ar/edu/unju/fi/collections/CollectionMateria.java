@@ -32,10 +32,13 @@ public class CollectionMateria {
 		
 		if(materias.isEmpty()) {
 			
-			// cargar //
-			materias.add(new Materia(1,"Programacion Estructurada","1er Año",89,"Presencial",docente1,carrera1));
-			materias.add(new Materia(2, "Bases de Datos", "2do Año", 75, "Virtual", docente2, carrera2));
-		    materias.add(new Materia(3, "Redes de Computadoras", "3er Año", 60, "Presencial", docente3, carrera3));
+			/*
+			 * // cargar // materias.add(new
+			 * Materia(1,"Programacion Estructurada","1er Año",89,"Presencial",docente1,
+			 * carrera1)); materias.add(new Materia(2, "Bases de Datos", "2do Año", 75,
+			 * "Virtual", docente2, carrera2)); materias.add(new Materia(3,
+			 * "Redes de Computadoras", "3er Año", 60, "Presencial", docente3, carrera3));
+			 */
 		}
 
 		return materias;

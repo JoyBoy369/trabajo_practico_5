@@ -14,8 +14,6 @@ import ar.edu.unju.fi.dto.CarreraDTO;
 import ar.edu.unju.fi.service.ICarreraService;
 
 
-
-
 @Controller
 @RequestMapping("/carrera")
 public class CarreraController {
@@ -57,11 +55,11 @@ public class CarreraController {
 		return modelView;
 	}
 	
-	@GetMapping("/modificar/{codigo}")
-	public String getEditarCarrera(Model model,@PathVariable(value="codigo")int codigo) {
+	@GetMapping("/modificar/{id}")
+	public String getEditarCarrera(Model model,@PathVariable(value="id")Long id) {
 		
 		boolean editar = true;
-		CarreraDTO carreraEncontradaDTO = carreraService.findByCod(codigo);
+		CarreraDTO carreraEncontradaDTO = carreraService.findById(id);
 		model.addAttribute("editar", editar);
 		model.addAttribute("carrera", carreraEncontradaDTO);
 		model.addAttribute("titulo", "Modificar Carrera");		
@@ -78,13 +76,14 @@ public class CarreraController {
 		return "redirect:/carrera/listado";
 	}
 	
-	@GetMapping("/eliminar/{codigo}")
-	public String eliminarCarrera(@PathVariable(value="codigo") int codigo) {
+	@GetMapping("/eliminar/{id}")
+	public String eliminarCarrera(@PathVariable(value="id") Long id) {
 		
-		carreraService.deleteByCod(codigo);
+		carreraService.deleteById(id);
 		
 		return "redirect:/carrera/listado";
 		
 	}
 
 }
+
