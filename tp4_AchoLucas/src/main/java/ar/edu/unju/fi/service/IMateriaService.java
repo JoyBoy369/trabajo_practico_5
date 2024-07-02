@@ -8,11 +8,11 @@ public interface IMateriaService {
 	
 	List<MateriaDTO> findAll();
 	
-	MateriaDTO findByCodigo(int codigo);
+	MateriaDTO findById(Long id);
 	
 	void save(MateriaDTO materiaDTO);
 	
-	void deleteByCodigo(int codigo);
+	void deleteById(MateriaDTO materiaDTO);
 	
 	void edit(MateriaDTO materiaDTO);
 

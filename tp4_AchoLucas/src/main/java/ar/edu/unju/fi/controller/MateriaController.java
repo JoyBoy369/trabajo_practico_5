@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.collections.CollectionCarrera;
-import ar.edu.unju.fi.collections.CollectionDocente;
 
 import ar.edu.unju.fi.dto.MateriaDTO;
+import ar.edu.unju.fi.service.ICarreraService;
+import ar.edu.unju.fi.service.IDocenteService;
 import ar.edu.unju.fi.service.IMateriaService;
+
 
 @Controller
 @RequestMapping("/materia")
@@ -26,9 +27,16 @@ public class MateriaController {
 	private IMateriaService materiaService;
 	
 	@Autowired
+	private ICarreraService carreraService;
+	
+	@Autowired
+	private IDocenteService docenteService;
+	
+	
+	@Autowired
 	private MateriaDTO materiaDTO;
 	
-	
+
 		
 	@GetMapping("/listado")
 	public String getMateriasList(Model model) {
@@ -44,8 +52,8 @@ public class MateriaController {
 		
 		boolean editar = false;
 		model.addAttribute("materia",materiaDTO);
-		model.addAttribute("docentes",CollectionDocente.getDocentes()); //Cuando este el service, cambiar //
-		model.addAttribute("carreras",CollectionCarrera.getCarreras());
+		model.addAttribute("docentes",docenteService.getDocentesNoAsignados()); 
+		model.addAttribute("carreras",carreraService.findAll());		
 		model.addAttribute("editar",editar);
 		model.addAttribute("titulo","Nueva materia");
 	
@@ -62,16 +70,16 @@ public class MateriaController {
 		return modelView;
 	}
 	
-	@GetMapping("/modificar/{codigo}")
-	public String getEditarMateria(Model model,@PathVariable(value="codigo")int codigo) {
+	@GetMapping("/modificar/{id}")
+	public String getEditarMateria(Model model,@PathVariable(value="id")Long id) {
 		
 		boolean editar = true;
-		MateriaDTO materiaEncontradaDTO = materiaService.findByCodigo(codigo);
+		MateriaDTO materiaEncontradaDTO = materiaService.findById(id);
 	
 		model.addAttribute("editar", editar);
 		model.addAttribute("materia", materiaEncontradaDTO);
-		model.addAttribute("docentes",CollectionDocente.getDocentes());
-		model.addAttribute("carreras",CollectionCarrera.getCarreras());
+		model.addAttribute("docentes",docenteService.getDocentesNoAsignados()); 
+		model.addAttribute("carreras",carreraService.findAll());	
 		model.addAttribute("titulo", "Modificar Carrera");		
 		
 		return "formulariomateria";
@@ -87,10 +95,12 @@ public class MateriaController {
 		return "redirect:/materia/listado";
 	}
 	
-	@GetMapping("/eliminar/{codigo}")
-	public String eliminarCarrera(@PathVariable(value="codigo") int codigo) {
+	@GetMapping("/eliminar/{id}")
+	public String eliminarCarrera(@PathVariable(value="id") Long id) {
 		
-		materiaService.deleteByCodigo(codigo);
+		MateriaDTO materiaEncontradaDTO = materiaService.findById(id);
+		
+		materiaService.deleteById(materiaEncontradaDTO);
 		
 		return "redirect:/materia/listado";
 		

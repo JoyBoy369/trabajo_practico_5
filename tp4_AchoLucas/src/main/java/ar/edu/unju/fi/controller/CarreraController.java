@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.dto.CarreraDTO;
+
 import ar.edu.unju.fi.service.ICarreraService;
-
-
 
 
 @Controller
@@ -57,11 +56,11 @@ public class CarreraController {
 		return modelView;
 	}
 	
-	@GetMapping("/modificar/{codigo}")
-	public String getEditarCarrera(Model model,@PathVariable(value="codigo")int codigo) {
+	@GetMapping("/modificar/{id}")
+	public String getEditarCarrera(Model model,@PathVariable(value="id")Long id) {
 		
 		boolean editar = true;
-		CarreraDTO carreraEncontradaDTO = carreraService.findByCod(codigo);
+		CarreraDTO carreraEncontradaDTO = carreraService.findById(id);
 		model.addAttribute("editar", editar);
 		model.addAttribute("carrera", carreraEncontradaDTO);
 		model.addAttribute("titulo", "Modificar Carrera");		
@@ -78,13 +77,16 @@ public class CarreraController {
 		return "redirect:/carrera/listado";
 	}
 	
-	@GetMapping("/eliminar/{codigo}")
-	public String eliminarCarrera(@PathVariable(value="codigo") int codigo) {
+	@GetMapping("/eliminar/{id}")
+	public String eliminarCarrera(@PathVariable(value="id") Long id) {
 		
-		carreraService.deleteByCod(codigo);
+		
+		CarreraDTO carreraEncontradaDTO = carreraService.findById(id);
+		carreraService.deleteById(carreraEncontradaDTO);
 		
 		return "redirect:/carrera/listado";
 		
 	}
 
 }
+

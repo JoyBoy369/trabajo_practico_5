@@ -11,10 +11,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Component
 public class DocenteDTO {
+	
+		private String id;
 
-		private int legajo;
+		private String legajo;
 		private String nombre;
 		private String apellido;
 		private String email;
 		private String telefono;
+		
+		private String estado;
+		
+		
 }

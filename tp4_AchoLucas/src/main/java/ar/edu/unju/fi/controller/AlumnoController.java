@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.model.Alumno;
+import ar.edu.unju.fi.dto.AlumnoDTO;
+
 import ar.edu.unju.fi.service.AlumnoService;
 
 @Controller
@@ -21,7 +22,7 @@ public class AlumnoController {
     private AlumnoService alumnoService;
 
     @Autowired
-    private Alumno alumno;
+    private AlumnoDTO alumnoDTO;
     
     @GetMapping("/listado")
     public String getAlumnosList(Model model) {
@@ -33,38 +34,45 @@ public class AlumnoController {
     @GetMapping("/nuevo")
     public String getNuevoAlumnoPage(Model model) {
         boolean editar = false;
-        model.addAttribute("alumno", alumno);
+        model.addAttribute("alumno", alumnoDTO);
         model.addAttribute("editar", editar);
         model.addAttribute("titulo", "Nuevo Alumno");
         return "formularioalumno";
     }
     
     @PostMapping("/guardar")
-    public ModelAndView guardarAlumno(@ModelAttribute("alumno") Alumno alumno) {
+    public ModelAndView guardarAlumno(@ModelAttribute("alumno") AlumnoDTO alumnoDTO) {
+    	
         ModelAndView modelView = new ModelAndView("redirect:/alumno/listado");
-        alumnoService.saveAlumno(alumno);
+        alumnoService.saveAlumno(alumnoDTO);
+        
         return modelView;
     }
     
-    @GetMapping("/modificar/{dni}")
-    public String getEditarAlumno(Model model, @PathVariable(value = "dni") String dni) {
+    @GetMapping("/modificar/{id}")
+    public String getEditarAlumno(Model model, @PathVariable(value = "id") Long id) {
         boolean editar = true;
-        Alumno alumnoEncontrado = alumnoService.getAlumnoByDni(dni);
+        AlumnoDTO alumnoEncontradoDTO = alumnoService.getAlumnoById(id);
         model.addAttribute("editar", editar);
-        model.addAttribute("alumno", alumnoEncontrado);
+        model.addAttribute("alumno", alumnoEncontradoDTO);
         model.addAttribute("titulo", "Modificar Alumno");
         return "formularioalumno";
     }
     
     @PostMapping("/modificar")
-    public String modificarAlumno(@ModelAttribute("alumno") Alumno alumno) {
-        alumnoService.updateAlumno(alumno);
+    public String modificarAlumno(@ModelAttribute("alumno") AlumnoDTO alumnoDTO) {
+    	
+        alumnoService.updateAlumno(alumnoDTO);
+        
         return "redirect:/alumno/listado";
     }
     
-    @GetMapping("/eliminar/{dni}")
-    public String eliminarAlumno(@PathVariable(value = "dni") String dni) {
-        alumnoService.deleteAlumno(dni);
+    @GetMapping("/eliminar/{id}")
+    public String eliminarAlumno(@PathVariable(value = "id") Long id) {
+    		
+    	AlumnoDTO alumnoEncontradoDTO = alumnoService.getAlumnoById(id);    	
+        alumnoService.deleteAlumno(alumnoEncontradoDTO);
+        
         return "redirect:/alumno/listado";
     }
 }

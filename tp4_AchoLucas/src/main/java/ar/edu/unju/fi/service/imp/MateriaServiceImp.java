@@ -5,18 +5,27 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ar.edu.unju.fi.collections.CollectionCarrera;
-import ar.edu.unju.fi.collections.CollectionDocente;
-import ar.edu.unju.fi.collections.CollectionMateria;
 import ar.edu.unju.fi.dto.MateriaDTO;
 import ar.edu.unju.fi.mapper.MateriaMapper;
 import ar.edu.unju.fi.model.Carrera;
 import ar.edu.unju.fi.model.Docente;
 import ar.edu.unju.fi.model.Materia;
+import ar.edu.unju.fi.repository.CarreraRepository;
+import ar.edu.unju.fi.repository.DocenteRepository;
+import ar.edu.unju.fi.repository.MateriaRepository;
 import ar.edu.unju.fi.service.IMateriaService;
 
 @Service("materiaServiceImp")
 public class MateriaServiceImp implements IMateriaService {
+	
+	@Autowired
+	private CarreraRepository carreraRepository;
+	
+	@Autowired
+	private DocenteRepository docenteRepository;
+	
+	@Autowired
+	private MateriaRepository materiaRepository;
 	
 	@Autowired
 	private MateriaMapper materiaMapper;
@@ -24,15 +33,15 @@ public class MateriaServiceImp implements IMateriaService {
 	@Override
 	public List<MateriaDTO> findAll() {
 		
-		List<MateriaDTO> materiasDTO = materiaMapper.toMateriaDTOList(CollectionMateria.getMaterias());		
+		List<MateriaDTO> materiasDTO = materiaMapper.toMateriaDTOList(materiaRepository.findByEstado(true));		
 		
 		return materiasDTO;
 	}
 
 	@Override
-	public MateriaDTO findByCodigo(int codigo) {
+	public MateriaDTO findById(Long id) {
 	
-		MateriaDTO materiaDTO = materiaMapper.toMateriaDTO(CollectionMateria.buscarMateria(codigo));
+		MateriaDTO materiaDTO = materiaMapper.toMateriaDTO(materiaRepository.findById(id).get());
 		
 		return materiaDTO;
 	}
@@ -42,19 +51,30 @@ public class MateriaServiceImp implements IMateriaService {
 		
 		Materia materia = materiaMapper.toMateria(materiaDTO);
 		
-		Docente docente = CollectionDocente.buscarDocente(materia.getDocente().getLegajo());
-		Carrera carrera = CollectionCarrera.buscarCarrera(materia.getCarrera().getCodigo());
-		materia.setDocente(docente);
-		materia.setCarrera(carrera);
 		
-		CollectionMateria.agregarMateria(materia);
+	
 		
+		  Carrera carrera = carreraRepository.findById(materia.getCarrera().getId()).get();
+		  Docente docente = docenteRepository.findById(materia.getDocente().getId()).get();
+		  
+		
+		  materia.setCarrera(carrera);
+		  materia.setDocente(docente);
+		  materia.setEstado(true);
+		  
+		
+		materiaRepository.save(materia);	
 	}
 
 	@Override
-	public void deleteByCodigo(int codigo) {
+	public void deleteById(MateriaDTO materiaDTO) {
 		
-		CollectionMateria.eliminarMateria(codigo);
+		Materia materia = materiaMapper.toMateria(materiaDTO);
+		materia.setEstado(false);
+		materia.setDocente(null);
+		materia.setCarrera(null);
+		materiaRepository.save(materia);
+		
 	}
 
 	@Override
@@ -62,12 +82,15 @@ public class MateriaServiceImp implements IMateriaService {
 		
 		Materia materia = materiaMapper.toMateria(materiaDTO);
 		
-		Docente docente = CollectionDocente.buscarDocente(materia.getDocente().getLegajo());
-		Carrera carrera = CollectionCarrera.buscarCarrera(materia.getCarrera().getCodigo());
+		Docente docente = docenteRepository.findById(materia.getCarrera().getId()).get();
+		Carrera carrera = carreraRepository.findById(materia.getCarrera().getId()).get();
+		
 		materia.setDocente(docente);
 		materia.setCarrera(carrera);
-	
-		CollectionMateria.modificarMateria(materia);
+		
+		materia.setEstado(true);
+		materiaRepository.save(materia);
+		
 
 	}
 

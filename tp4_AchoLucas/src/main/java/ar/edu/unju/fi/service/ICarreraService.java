@@ -4,15 +4,16 @@ import java.util.List;
 
 import ar.edu.unju.fi.dto.CarreraDTO;
 
+
 public interface ICarreraService {
 
 	List<CarreraDTO> findAll();
 	
-	CarreraDTO findByCod(int codigo);
+	CarreraDTO findById(Long id);
 	
-	boolean save(CarreraDTO carreraDTO);
+	void save(CarreraDTO carreraDTO);
 	
-	void deleteByCod(int cod);
+	void deleteById(CarreraDTO carreraDTO);
 	
 	void edit(CarreraDTO carreraDTO);
 	
