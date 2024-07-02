@@ -2,6 +2,8 @@ package ar.edu.unju.fi.service.imp;
 
 import java.util.List;
 
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,8 @@ import ar.edu.unju.fi.service.IMateriaService;
 
 @Service("materiaServiceImp")
 public class MateriaServiceImp implements IMateriaService {
+	
+	private static final Log LOGGER = LogFactory.getLog(MateriaServiceImp.class);
 	
 	@Autowired
 	private CarreraRepository carreraRepository;
@@ -34,15 +38,14 @@ public class MateriaServiceImp implements IMateriaService {
 	public List<MateriaDTO> findAll() {
 		
 		List<MateriaDTO> materiasDTO = materiaMapper.toMateriaDTOList(materiaRepository.findByEstado(true));		
-		
+		LOGGER.info("Cantidad de materias en el listado: "+materiasDTO.size()+".");
 		return materiasDTO;
 	}
 
 	@Override
 	public MateriaDTO findById(Long id) {
-	
 		MateriaDTO materiaDTO = materiaMapper.toMateriaDTO(materiaRepository.findById(id).get());
-		
+		LOGGER.info("Buscando materia.");
 		return materiaDTO;
 	}
 
@@ -64,6 +67,7 @@ public class MateriaServiceImp implements IMateriaService {
 		  
 		
 		materiaRepository.save(materia);	
+		LOGGER.info("Materia guardada correctamente.");
 	}
 
 	@Override
@@ -74,7 +78,7 @@ public class MateriaServiceImp implements IMateriaService {
 		materia.setDocente(null);
 		materia.setCarrera(null);
 		materiaRepository.save(materia);
-		
+		LOGGER.info("Materia eliminada correctamente.");
 	}
 
 	@Override
@@ -90,7 +94,7 @@ public class MateriaServiceImp implements IMateriaService {
 		
 		materia.setEstado(true);
 		materiaRepository.save(materia);
-		
+		LOGGER.info("Materia editada correctamente.");
 
 	}
 
