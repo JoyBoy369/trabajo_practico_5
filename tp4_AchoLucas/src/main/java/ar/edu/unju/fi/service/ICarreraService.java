@@ -3,7 +3,7 @@ package ar.edu.unju.fi.service;
 import java.util.List;
 
 import ar.edu.unju.fi.dto.CarreraDTO;
-import ar.edu.unju.fi.model.Carrera;
+
 
 public interface ICarreraService {
 
@@ -11,9 +11,9 @@ public interface ICarreraService {
 	
 	CarreraDTO findById(Long id);
 	
-	Carrera save(CarreraDTO carreraDTO);
+	void save(CarreraDTO carreraDTO);
 	
-	void deleteById(Long id);
+	void deleteById(CarreraDTO carreraDTO);
 	
 	void edit(CarreraDTO carreraDTO);
 	

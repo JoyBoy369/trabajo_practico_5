@@ -16,12 +16,17 @@
         <form data-th-action="${editar}?@{/docente/modificar} : @{/docente/guardar}" th:object="${docente}" method="post">
         
             <div class="row mb-3 justify-content-center"th:if="${editar}">
-                <label for="codigo">Legajo:</label>
+                <label for="codigo">ID:</label>
                 <div>
                 	
-                	 <input type="number" th:readonly="${editar}?'readonly'" class="form-control" id="legajo" th:field="*{legajo}">
+                	 <input type="number" th:readonly="${editar}?'readonly'" class="form-control" id="legajo" th:field="*{id}">
                 </div>
                
+            </div>
+            
+            <div class="form-group">
+                <label for="Legajo">Legajo:</label>
+                <input type="number" class="form-control" id="nombre" th:field="*{legajo}" required>
             </div>
             
             <div class="form-group">

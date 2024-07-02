@@ -1,19 +1,21 @@
 package ar.edu.unju.fi.service;
 
 import ar.edu.unju.fi.dto.DocenteDTO;
-import ar.edu.unju.fi.model.Docente;
+
 
 import java.util.List;
 
-public interface IDocenteService {
-	
-		public void agregarDocente(Docente docente);
+public interface IDocenteService {		
 		
-		public List<DocenteDTO> getDocentes();
+		 List<DocenteDTO> getDocentes();
+		 
+		 List<DocenteDTO> getDocentesNoAsignados(); //Util para validad Materias //
+		 		
+		 DocenteDTO buscarDocente(Long id);
 		
-		public Docente buscarDocente(int legajo);
+		 void agregarDocente(DocenteDTO docenteDTO);
 		
-		public void modificarDocente(Docente docente);
+		 void modificarDocente(DocenteDTO docenteDTO);
 		
-		public void eliminarDocente(int legajo);
+		 void eliminarDocente(DocenteDTO docenteDTO);
 }

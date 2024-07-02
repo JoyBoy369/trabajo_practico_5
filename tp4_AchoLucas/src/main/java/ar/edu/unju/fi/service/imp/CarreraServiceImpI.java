@@ -22,31 +22,37 @@ public class CarreraServiceImpI implements ICarreraService {
 	
 	@Override
 	public List<CarreraDTO> findAll() {
-		List<CarreraDTO> carrerasDTO = carreraMapper.toCarreraDTOList(carreraRepository.findAll());
+		
+		List<CarreraDTO> carrerasDTO = carreraMapper.toCarreraDTOList(carreraRepository.findByEstado(true));
 		return carrerasDTO;
 	}
 
 	@Override
 	public CarreraDTO findById(Long id) {
+		
 		return carreraMapper.toCarreraDTO(carreraRepository.findById(id).get());
 	}
 
 	@Override
-	public Carrera save(CarreraDTO carreraDTO) {
-		Carrera carrera = carreraRepository.save(carreraMapper.toCarrera(carreraDTO));
-		return carrera;
+	public void save(CarreraDTO carreraDTO) {
+		Carrera carrera = carreraMapper.toCarrera(carreraDTO);
+		carrera.setEstado(true);
+		carreraRepository.save(carrera);
+		
 	}
 
 	@Override
-	public void deleteById(Long id) {
-		Carrera carrera = carreraRepository.findById(id).get();
+	public void deleteById(CarreraDTO carreraDTO) {
+		Carrera carrera = carreraMapper.toCarrera(carreraDTO);
 		carrera.setEstado(false);
 		carreraRepository.save(carrera);
 	}
 
 	@Override
 	public void edit(CarreraDTO carreraDTO) {
-		carreraRepository.save(carreraMapper.toCarrera(carreraDTO));
+		Carrera carrera = carreraMapper.toCarrera(carreraDTO);
+		carrera.setEstado(true);
+		carreraRepository.save(carrera);
 	}
 
 

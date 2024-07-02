@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.dto.CarreraDTO;
+
 import ar.edu.unju.fi.service.ICarreraService;
 
 
@@ -79,7 +80,9 @@ public class CarreraController {
 	@GetMapping("/eliminar/{id}")
 	public String eliminarCarrera(@PathVariable(value="id") Long id) {
 		
-		carreraService.deleteById(id);
+		
+		CarreraDTO carreraEncontradaDTO = carreraService.findById(id);
+		carreraService.deleteById(carreraEncontradaDTO);
 		
 		return "redirect:/carrera/listado";
 		

@@ -11,13 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.service.imp.DocenteServiceImp;
+import ar.edu.unju.fi.dto.DocenteDTO;
 
-import ar.edu.unju.fi.model.Docente;
 
 @Controller
 @RequestMapping("/docente")
 public class DocenteController {
-
+	
+	@Autowired
+	private DocenteDTO docenteDTO;
+	
 	@Autowired
 	private DocenteServiceImp docenteServiceImp;
 	
@@ -33,9 +36,8 @@ public class DocenteController {
 	@GetMapping("/nuevo")
 	public String getNuevoDocentePage(Model model) {
 		
-		boolean editar = false;
-		Docente docente = new Docente();
-		model.addAttribute("docente",docente);
+		boolean editar = false;	
+		model.addAttribute("docente",docenteDTO);
 		model.addAttribute("editar",editar);
 		model.addAttribute("titulo","Nuevo docente");
 	
@@ -43,40 +45,41 @@ public class DocenteController {
 	}
 	
 	@PostMapping("/guardar")
-	public ModelAndView guardarDocente(@ModelAttribute("docente") Docente docente) {
+	public ModelAndView guardarDocente(@ModelAttribute("docente") DocenteDTO docenteDTO) {
 		
 		ModelAndView modelView = new ModelAndView("docentes");
-		docenteServiceImp.agregarDocente(docente);
+		docenteServiceImp.agregarDocente(docenteDTO);
 		modelView.addObject("docentes",docenteServiceImp.getDocentes());
 		
 		return modelView;
 	}
 	
-	@GetMapping("/modificar/{legajo}")
-	public String getEditarDocente(Model model,@PathVariable(value="legajo")int legajo) {
+	@GetMapping("/modificar/{id}")
+	public String getEditarDocente(Model model,@PathVariable(value="id")Long id) {
 		
 		boolean editar = true;
-		Docente docenteEncontrado = new Docente();
-		docenteEncontrado = docenteServiceImp.buscarDocente(legajo);
+		DocenteDTO docenteEncontradoDTO = docenteServiceImp.buscarDocente(id);
+		
 		model.addAttribute("editar", editar);
-		model.addAttribute("docente", docenteEncontrado);
+		model.addAttribute("docente", docenteEncontradoDTO);
 		model.addAttribute("titulo", "Modificar Docente");		
 		
 		return "formulariodocente";
 	}
 	
 	@PostMapping("/modificar")
-	public String modificarDocente(@ModelAttribute("docente") Docente docente) {
+	public String modificarDocente(@ModelAttribute("docente") DocenteDTO docenteDTO) {
 		
-		docenteServiceImp.modificarDocente(docente);
+		docenteServiceImp.modificarDocente(docenteDTO);
 		
 		return "redirect:/docente/listado";
 	}
 	
 	@GetMapping("/eliminar/{legajo}")
-	public String eliminarDocente(@PathVariable(value="legajo") int legajo) {
+	public String eliminarDocente(@PathVariable(value="legajo") Long id) {
 		
-		docenteServiceImp.eliminarDocente(legajo);
+		DocenteDTO docenteEncontradoDTO = docenteServiceImp.buscarDocente(id);
+		docenteServiceImp.eliminarDocente(docenteEncontradoDTO);
 		
 		return "redirect:/docente/listado";
 		

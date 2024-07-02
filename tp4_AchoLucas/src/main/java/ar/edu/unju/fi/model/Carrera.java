@@ -37,7 +37,7 @@ public class Carrera {
 	@Column(name = "carre_estado")
     private boolean estado;
 
-	@OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL)
 	private List<Materia> materias;
 
 	public Carrera(int codigo, String nombre, int cantidadAnios, boolean estado) {

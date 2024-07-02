@@ -68,17 +68,7 @@ public class CollectionMateria {
 	
 	public static void modificarMateria(Materia materia) {
 		
-		for(Materia m : materias) {
-			if(m.getCodigo() == materia.getCodigo()) {
-				m.setNombre(materia.getNombre());
-				m.setCurso(materia.getCurso());
-				m.setCantidadHoras(materia.getCantidadHoras());
-				m.setModalidad(materia.getModalidad());
-				m.setDocente(materia.getDocente());
-				m.setCarrera(materia.getCarrera());
-								
-			}
-		}	 		 				
+			 				
 	}
 	
 	public static Materia buscarMateria(int codigo) {

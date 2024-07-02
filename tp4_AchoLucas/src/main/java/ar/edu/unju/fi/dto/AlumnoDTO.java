@@ -1,6 +1,10 @@
 package ar.edu.unju.fi.dto;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
+
+import ar.edu.unju.fi.model.Materia;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +15,8 @@ import lombok.NoArgsConstructor;
 @Component
 public class AlumnoDTO {
 	
+		private String id;
+		
 		private String dni;
 	    private String nombre;
 	    private String apellido;
@@ -19,5 +25,7 @@ public class AlumnoDTO {
 	    private String fechaNacimiento;	    
 	    private String domicilio;
 	    private String lu; // LU = Libreta Universitaria
-
+	  
+	    private String estado;
+	    private List<Materia> materias;
 }

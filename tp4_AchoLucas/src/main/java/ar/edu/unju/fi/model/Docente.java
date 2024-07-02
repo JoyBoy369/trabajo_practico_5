@@ -1,10 +1,12 @@
 package ar.edu.unju.fi.model;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.AllArgsConstructor;
@@ -38,6 +40,11 @@ public class Docente {
 
 	@Column(name = "doce_estado")
 	private boolean estado;
+	
+	
+	@OneToOne(mappedBy = "docente")
+	private Materia materia;
+
 
 	public Docente(int legajo, String nombre, String apellido, String email, String telefono, boolean estado) {
 		super();
@@ -47,6 +54,7 @@ public class Docente {
 		this.email = email;
 		this.telefono = telefono;
 		this.estado = estado;
+		
 	}
 	
 }
