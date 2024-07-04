@@ -12,7 +12,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -60,6 +62,10 @@ public class Alumno {
     
     @ManyToMany(mappedBy = "alumnos")
     private List<Materia> materias = new ArrayList<Materia>();
+    
+    @ManyToOne
+	@JoinColumn(name = "carre_id")
+    private Carrera carrera;
 
 	public Alumno(String dni, String nombre, String apellido, String email, String telefono, LocalDate fechaNacimiento,
 			String domicilio, String lu, boolean estado, List<Materia> materias) {

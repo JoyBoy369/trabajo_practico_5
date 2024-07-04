@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unju.fi.dto.AlumnoDTO;
 
 import ar.edu.unju.fi.service.AlumnoService;
+import ar.edu.unju.fi.service.IMateriaService;
 import jakarta.validation.Valid;
 
 
@@ -21,6 +22,9 @@ import jakarta.validation.Valid;
 @RequestMapping("/alumno")
 public class AlumnoController {
 
+	@Autowired
+	private IMateriaService materiaService;
+	
     @Autowired
     private AlumnoService alumnoService;
 
@@ -90,4 +94,15 @@ public class AlumnoController {
         
         return "redirect:/alumno/listado";
     }
+    
+	@GetMapping("/asignar/{id}")
+	public String getMateriaPage(Model model,@PathVariable(value="id")Long id) {
+		
+		AlumnoDTO alumnoElegidoDTO = alumnoService.getAlumnoById(id);
+		
+		model.addAttribute("alumno",alumnoElegidoDTO);
+		model.addAttribute("materias",materiaService.findAll());
+		model.addAttribute("titulo", "Elegir Materia");		
+		return "inscripcionmateria";
+	}
 }

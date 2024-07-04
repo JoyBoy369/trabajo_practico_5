@@ -39,6 +39,9 @@ public class Carrera {
 
 	@OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL)
 	private List<Materia> materias;
+	
+	@OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL)
+	private List<Alumno> alumnos;
 
 	public Carrera(int codigo, String nombre, int cantidadAnios, boolean estado) {
 		super();
