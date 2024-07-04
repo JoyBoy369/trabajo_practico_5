@@ -1,71 +1,195 @@
 @charset "UTF-8";
 
- body {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-         .custom-navbar {
-            background-color:#323A45; 
-            padding: 0;
-             
-        }
-        .custom-navbar .nav-link {
-            color: white;
-             padding: 1rem;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .custom-navbar .nav-link:hover {
-            color: white;
-            background-color: #2082A5;
-        }
-   
-          .wrapper {
-            flex: 1;
-            display: flex;
-        }
-        .sidebar {
-            background-color: #2082A5;
-            color: white;
-            padding: 20px;
-        }
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 10px;
-        }
-        .sidebar a:hover {
-            text-decoration: underline;
-        }
-        .content {
-            flex: 1;
-            padding: 20px;
-        }
-        .news-item {
-            margin-bottom: 20px;
-        }
-        .footer {
-            background-color: #323A45;
-            color: white;
-            padding: 40px 0;
-        }
-        .footer a {
-            color: white;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        .footer .column-title {
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        .footer .links a {
-            display: block;
-            margin-bottom: 8px;
-        }
-        
-        
-        
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Navbar */
+.custom-navbar {
+    background-color: #323A45;
+    padding: 0;
+}
+
+.custom-navbar .nav-link {
+    color: white;
+    padding: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.custom-navbar .nav-link:hover {
+    color: white;
+    background-color: #2082A5;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #2082A5;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    overflow-y: auto;
+}
+
+.sidebar h5 {
+    margin-top: 60px; /* To account for the header height */
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar a:hover {
+    background-color: #186b8c;
+    text-decoration: none;
+}
+
+/* Wrapper for content */
+.wrapper {
+    margin-left: 270px; /* Give space for the fixed sidebar */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 60px; /* To account for the header height */
+}
+
+/* Main content area */
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Headings */
+.main-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2082A5;
+    margin-bottom: 20px;
+}
+
+.sub-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #323A45;
+    margin-bottom: 15px;
+}
+
+/* Tables */
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table thead th {
+    background-color: #2082A5;
+    color: white;
+}
+
+.table-bordered {
+    border: 2px solid #2082A5;
+    border-radius: 5px;
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #2082A5;
+}
+
+.table th, .table td {
+    padding: 10px;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #2082A5;
+    border-color: #2082A5;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #186b8c;
+    border-color: #186b8c;
+}
+
+/* Form Styles */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+form select, form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+form button {
+    background-color: #2082A5;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #186b8c;
+}
+
+/* Footer */
+.footer {
+    background-color: #323A45;
+    color: white;
+    padding: 40px 0;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer .column-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footer .links a {
+    display: block;
+    margin-bottom: 8px;
+}
