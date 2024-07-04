@@ -67,8 +67,11 @@ public class AlumnoController {
     }
     
     @PostMapping("/modificar")
-    public String modificarAlumno(@Valid @ModelAttribute("alumno") AlumnoDTO alumnoDTO, BindingResult result) {
+    public String modificarAlumno(@Valid @ModelAttribute("alumno") AlumnoDTO alumnoDTO, BindingResult result, Model model) {
+    	boolean editar = true;
     	if(result.hasErrors()) {
+    		model.addAttribute("editar", editar);
+            model.addAttribute("titulo", "Modificar Alumno");
     		return "formularioalumno";
     	}else {
     		alumnoService.updateAlumno(alumnoDTO);

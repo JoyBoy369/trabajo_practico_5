@@ -75,8 +75,11 @@ public class CarreraController {
 	
 	
 	@PostMapping("/modificar")
-	public String modificarCarrera(@Valid @ModelAttribute("carrera") CarreraDTO carreraDTO, BindingResult result) {
+	public String modificarCarrera(@Valid @ModelAttribute("carrera") CarreraDTO carreraDTO, BindingResult result, Model model) {
+		boolean editar = true;
 		if(result.hasErrors()) {
+			model.addAttribute("editar", editar);
+			model.addAttribute("titulo", "Modificar Carrera");	
 			return "formulariocarrera";
 		}else {
 			carreraService.edit(carreraDTO);
