@@ -91,7 +91,7 @@ public class MateriaServiceImp implements IMateriaService {
 		
 		materia.setDocente(docente);
 		materia.setCarrera(carrera);
-		
+				
 		materia.setEstado(true);
 		materiaRepository.save(materia);
 		LOGGER.info("Materia editada correctamente.");

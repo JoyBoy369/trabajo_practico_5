@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head data-th-replace="~{/layouts/header :: head}">
+
+</head>
+<body>
+<div data-th-replace="~{/layouts/header :: header}"></div>
+
+
+	
+	 <div class=" mt-5 container d-flex justify-content-center align-items-center">
+		<div class="text-center">
+		   <h1 class="card-title">Seleccione un Alumno</h1>
+		</div>
+    </div>
+	
+	 <div class="container mt-5">
+        <div class="row">
+        	
+        
+            <div class="card m-3 d-inline-block col-lg-5" data-th-each="alum: ${alumnoslista}">
+                <div class="row g-0">
+                    <div class="col-md-4 d-flex justify-content-center align-items-center">
+                        <img th:src="@{/images/estudiante.png}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                   
+                    <div class="col-md-8 d-flex flex-column justify-content-center">
+                        <div class="card-body">
+                        	
+                           <h5 class="card-title"><span data-th-text="${alum.nombre}+' '"></span><span data-th-text="${alum.apellido}"></span></h5>
+                           
+                            <p class="card-text">LU: <span data-th-text="${alum.lu}"></span></p>
+                            <p class="card-text">DNI: <span data-th-text="${alum.dni}"></span></p>
+                            <p class="card-text">Nacimiento: <span data-th-text="${alum.fechaNacimiento}"></span></p>
+                            <p class="card-text">Correo: <span data-th-text="${alum.email}"></span></p>
+                            <p class="card-text">Telefono: +54 <span data-th-text="${alum.telefono}"></span></p>
+                            <p class="card-text">Domicilio: <span data-th-text="${alum.domicilio}"></span></p>
+                            
+                          
+                            <a class="btn btn-warning" data-th-href="@{/registro/alumno/}+${alum.id}"><small class="text-muted">Seleccionar</small></a>
+                         
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+
+<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
