@@ -100,8 +100,12 @@ public class MateriaController {
 	}
 	
 	@PostMapping("/modificar")
-	public String modificarMateria(@Valid @ModelAttribute("materia") MateriaDTO materiaDTO, BindingResult result) {
+	public String modificarMateria(@Valid @ModelAttribute("materia") MateriaDTO materiaDTO, BindingResult result, Model model) {
+		boolean editar = true;
 		if(result.hasErrors()) {
+			model.addAttribute("editar", editar);
+			model.addAttribute("docentes",docenteService.getDocentesNoAsignados()); 
+			model.addAttribute("carreras",carreraService.findAll());
 			return "formulariomateria";
 		}else {
 			materiaService.edit(materiaDTO);

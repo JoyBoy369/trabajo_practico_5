@@ -53,13 +53,9 @@ public class MateriaServiceImp implements IMateriaService {
 	public void save(MateriaDTO materiaDTO) {
 		
 		Materia materia = materiaMapper.toMateria(materiaDTO);
-		
-		
-	
-		
+
 		  Carrera carrera = carreraRepository.findById(materia.getCarrera().getId()).get();
 		  Docente docente = docenteRepository.findById(materia.getDocente().getId()).get();
-		  
 		
 		  materia.setCarrera(carrera);
 		  materia.setDocente(docente);

@@ -19,13 +19,13 @@ import java.util.List;
 @RequestMapping("/filtrarAlumno")
 public class FiltrarAlumnoController {
 
-    @Autowired
-    private IMateriaService materiaService;
+	@Autowired
+	private IMateriaService materiaService;
 
-    @Autowired
-    private AlumnoService alumnoService;
+	@Autowired
+	private AlumnoService alumnoService;
 
-    @GetMapping("/formulario")
+	@GetMapping("/formulario")
     public String getFiltrarAlumnoPage(Model model) {
         List<MateriaDTO> materias = materiaService.findAll();
         model.addAttribute("materias", materias);
@@ -33,17 +33,21 @@ public class FiltrarAlumnoController {
         return "Filtrar";
     }
 
-    @PostMapping("/resultados")
-    public String filtrarAlumno(@RequestParam("materiaCodigo") int materiaCodigo, Model model) {
-        MateriaDTO materia = materiaService.findById(materiaCodigo);
-        List<AlumnoDTO> alumnos = alumnoService.findByMateria(materiaCodigo);
-        String mensaje = (materia != null) ? "Alumnos de la materia: " + materia.getNombre() : "Materia no encontrada";
-
-        model.addAttribute("materias", materiaService.findAll());
-        model.addAttribute("alumnos", alumnos);
-        model.addAttribute("carreraId", materiaCodigo);
-        model.addAttribute("mensaje", mensaje);
-
-        return "Filtrar";
-    }
+/*
+ * @PostMapping("/resultados") public String
+ * filtrarAlumno(@RequestParam("materiaCodigo") int materiaCodigo, Model model)
+ * {
+ * 
+ * MateriaDTO materia = materiaService.findById(materiaCodigo); List<AlumnoDTO>
+ * alumnos = alumnoService.findByMateria(materiaCodigo);
+ * 
+ * String mensaje = (materia != null) ? "Alumnos de la materia: " +
+ * materia.getNombre() : "Materia no encontrada";
+ * 
+ * model.addAttribute("materias", materiaService.findAll());
+ * model.addAttribute("alumnos", alumnos); model.addAttribute("carreraId",
+ * materiaCodigo); model.addAttribute("mensaje", mensaje);
+ * 
+ * return "Filtrar"; }
+ */
 }

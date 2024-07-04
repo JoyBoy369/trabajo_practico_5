@@ -26,7 +26,7 @@ body {
     background-color: #2082A5;
 }
 
-/* Sidebar */
+/* Sidebar 
 .sidebar {
     background-color: #2082A5;
     color: white;
@@ -38,6 +38,7 @@ body {
     width: 250px;
     overflow-y: auto;
 }
+*/
 
 .sidebar h5 {
     margin-top: 60px; /* To account for the header height */
