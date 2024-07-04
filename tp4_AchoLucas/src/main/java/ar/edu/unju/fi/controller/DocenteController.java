@@ -3,6 +3,7 @@ package ar.edu.unju.fi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.service.imp.DocenteServiceImp;
 import ar.edu.unju.fi.dto.DocenteDTO;
-
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/docente")
@@ -45,11 +46,15 @@ public class DocenteController {
 	}
 	
 	@PostMapping("/guardar")
-	public ModelAndView guardarDocente(@ModelAttribute("docente") DocenteDTO docenteDTO) {
-		
-		ModelAndView modelView = new ModelAndView("docentes");
-		docenteServiceImp.agregarDocente(docenteDTO);
-		modelView.addObject("docentes",docenteServiceImp.getDocentes());
+	public ModelAndView guardarDocente(@Valid @ModelAttribute("docente") DocenteDTO docenteDTO, BindingResult result) {
+		ModelAndView modelView;
+		if(result.hasErrors()) {
+			modelView = new ModelAndView("formulariodocente");
+		}else {
+			modelView = new ModelAndView("docentes");
+			docenteServiceImp.agregarDocente(docenteDTO);
+			modelView.addObject("docentes",docenteServiceImp.getDocentes());
+		}
 		
 		return modelView;
 	}
@@ -68,12 +73,15 @@ public class DocenteController {
 	}
 	
 	@PostMapping("/modificar")
-	public String modificarDocente(@ModelAttribute("docente") DocenteDTO docenteDTO) {
+	public String modificarDocente(@Valid @ModelAttribute("docente") DocenteDTO docenteDTO, BindingResult result) {
+		if(result.hasErrors()) {
+			return "formulariodocente";
+		}else {
+			docenteServiceImp.modificarDocente(docenteDTO);
+			return "redirect:/docente/listado";
+		}
+		}
 		
-		docenteServiceImp.modificarDocente(docenteDTO);
-		
-		return "redirect:/docente/listado";
-	}
 	
 	@GetMapping("/eliminar/{legajo}")
 	public String eliminarDocente(@PathVariable(value="legajo") Long id) {
