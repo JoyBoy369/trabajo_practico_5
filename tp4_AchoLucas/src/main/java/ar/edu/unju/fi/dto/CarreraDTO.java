@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.model.Materia;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,5 +35,7 @@ public class CarreraDTO {
     private String estado;
     
     private List<Materia> materias;
+    
+    private List<Alumno> alumnos;
 
 }

@@ -8,11 +8,7 @@
 
 
 	
-	 <div class=" mt-5 container d-flex justify-content-center align-items-center">
-		<div class="text-center">
-		   <a  data-th-href="@{/alumno/nuevo}" class="btn btn-success">Nuevo Alumno</a>
-		</div>
-    </div>
+	
 	
 	 <div class="container mt-5">
         <div class="row">
@@ -31,15 +27,18 @@
                            
                             <p class="card-text">LU: <span data-th-text="${alum.lu}"></span></p>
                             <p class="card-text">DNI: <span data-th-text="${alum.dni}"></span></p>
-                            <p class="card-text">Nacimiento: <span data-th-text="${alum.fechaNacimiento}"></span></p>
                             <p class="card-text">Correo: <span data-th-text="${alum.email}"></span></p>
+                            <a class="btn btn-success" data-th-href="@{/alumno/asignar/}+${alum.id}"><small class="text-muted">Matricular</small></a> 
+                             
+                              
+                            <p class="card-text">Nacimiento: <span data-th-text="${alum.fechaNacimiento}"></span></p>                         
                             <p class="card-text">Telefono: +54 <span data-th-text="${alum.telefono}"></span></p>
                             <p class="card-text">Domicilio: <span data-th-text="${alum.domicilio}"></span></p>
-                            
+                            <p class="card-text">Carrera: <span data-th-text="${alum.carrera.nombre}"></span></p>          
                           
                             <a class="btn btn-warning" data-th-href="@{/alumno/modificar/}+${alum.id}"><small class="text-muted">Editar</small></a>
                             <a class="btn btn-danger" data-th-href="@{/alumno/eliminar/}+${alum.id}"><small class="text-muted">Eliminar</small></a>
-							<a class="btn btn-danger" data-th-href="@{/alumno/asignar/}+${alum.id}"><small class="text-muted">Asignar Materia</small></a>
+							<a class="btn btn-success" data-th-href="@{/alumno/modificar/}+${alum.id}"><small class="text-muted">Materias</small></a>
                         </div>
                     </div> 
                 </div>

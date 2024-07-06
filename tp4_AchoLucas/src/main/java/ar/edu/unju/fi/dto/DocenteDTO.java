@@ -2,6 +2,8 @@ package ar.edu.unju.fi.dto;
 
 import org.springframework.stereotype.Component;
 
+
+import ar.edu.unju.fi.model.Materia;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,5 +39,5 @@ public class DocenteDTO {
 		
 		private String estado;
 		
-		
+		private Materia materia;
 }

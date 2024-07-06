@@ -8,11 +8,7 @@
 
 
 	
-	 <div class=" mt-5 container d-flex justify-content-center align-items-center">
-		<div class="text-center">
-		   <a  data-th-href="@{/carrera/nuevo}" class="btn btn-success">Nueva Carrera</a>
-		</div>
-    </div>
+	 
 	
 	 <div class="container mt-5">
         <div class="row">
@@ -28,14 +24,16 @@
                         <div class="card-body">
                            <h5 class="card-title"><span data-th-text="${carre.nombre}"></span></h5>
                             <p class="card-text">Duracion: <span data-th-text="${carre.cantidadAnios}+' años '"></span></p>
-                            <p class="card-text">Codigo: 0<span data-th-text="${carre.codigo}"></span></p>
+                            <a class="btn btn-success" data-th-href="@{/carrera/modificar/}+${carre.id}"><small class="text-muted">Plan de Estudio</small></a>
                             
+                            
+                            <p class="card-text">Codigo: 0<span data-th-text="${carre.codigo}"></span></p>                       
                             <p class="card-text"><span th:if="${carre.estado}">Estado: Activa</span></p>
-                            <p class="card-text"><span th:if="${!carre.estado}">Estado: Inactiva</span></p>
-                            
-                            
+                            <p class="card-text"><span th:if="${!carre.estado}">Estado: Inactiva</span></p>                           
                             <a class="btn btn-warning" data-th-href="@{/carrera/modificar/}+${carre.id}"><small class="text-muted">Editar</small></a>
                             <a class="btn btn-danger" data-th-href="@{/carrera/eliminar/}+${carre.id}"><small class="text-muted">Eliminar</small></a>
+                            <a class="btn btn-success" data-th-href="@{/carrera/modificar/}+${carre.id}"><small class="text-muted">Alumnos</small></a>
+                          
                         </div>
                     </div> 
                 </div>

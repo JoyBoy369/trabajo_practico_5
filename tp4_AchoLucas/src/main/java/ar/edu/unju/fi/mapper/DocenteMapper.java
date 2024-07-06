@@ -1,8 +1,7 @@
 package ar.edu.unju.fi.mapper;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mappings;
-import org.mapstruct.Mapping;
+
 
 import java.util.List;
 
