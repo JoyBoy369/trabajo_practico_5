@@ -811,7 +811,7 @@ body {
     border-radius: 0.25rem; /* Bordes redondeados */
 }
 
-/* Efecto hover para el botón de filtro */
+
 .btn-primary:hover {
     opacity: 0.9; /* Efecto hover para el botón */
 }

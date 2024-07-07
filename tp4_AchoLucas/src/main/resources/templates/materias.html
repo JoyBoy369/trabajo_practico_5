@@ -6,13 +6,13 @@
 <body>
 <div data-th-replace="~{/layouts/header :: header}"></div>
 
-<!-- Botón "Nueva Materia" alineado a la derecha -->
+<!-- Botón "Nueva Materia" alineado a la derech -->
 <div class="mt-5 container d-flex justify-content-end align-items-center">
     <a data-th-href="@{/materia/nuevo}" class="btn btn-success">
-        <i class="fas fa-plus"></i> Nueva Materia
+        <i class="fas fa-plus"></i> Nueva Materia.
     </a>
 </div>
-
+<!-- codigo -->
 <div class="container mt-4">
     <div class="row">
         <div class="card m-3 d-inline-block col-lg-5" data-th-each="mate: ${materias}">
