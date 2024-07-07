@@ -28,7 +28,7 @@
         <div class="card m-3 d-inline-block col-lg-5" data-th-each="alum: ${alumnos}">
             <div class="row g-0">
                 <div class="col-md-4 d-flex justify-content-center align-items-center">
-                    <img th:src="@{/images/estudiante.png}" class="img-fluid rounded-start" alt="...">
+                    <img th:src="@{/images/estudiante.png}" id="estudianteImagen" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8 d-flex flex-column justify-content-center">
                     <div class="card-body">
@@ -55,14 +55,16 @@
                             <i class="fas fa-home"></i> Domicilio: <span data-th-text="${alum.domicilio}"></span>
                         </p>
                         <a class="btn btn-warning" data-th-href="@{/alumno/modificar/} + ${alum.id}">
-                            <i class="fas fa-user-edit"></i> <small class="text-muted">Editar</small>
-                        </a>
-                        <a class="btn btn-danger" data-th-href="@{/alumno/eliminar/} + ${alum.id}">
-                            <i class="fas fa-user-times"></i> <small class="text-muted">Eliminar</small>
-                        </a>
-                        <a class="btn btn-danger" data-th-href="@{/alumno/asignar/} + ${alum.id}">
-                            <i class="fas fa-book"></i> <small class="text-muted">Asignar Materia</small>
-                        </a>
+
+
+<i class="fas fa-user-edit"></i><small class="text-muted" style="color: white !important;">Editar</small>
+</a>
+<a class="btn btn-danger mt-2" data-th-href="@{/alumno/eliminar/} + ${alum.id}">
+    <i class="fas fa-user-times"></i> <small class="text-muted" style="color: white !important;">Eliminar</small>
+</a>
+<a class="btn btn-success mt-2" data-th-href="@{/alumno/asignar/} + ${alum.id}">
+    <i class="fas fa-book"></i> <small class="text-muted" style="color: white !important;">Asignar Materia</small>
+</a>
                     </div>
                 </div> 
             </div>
