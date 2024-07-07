@@ -8,6 +8,8 @@ public interface IMateriaService {
 	
 	List<MateriaDTO> findAll();
 	
+	List<MateriaDTO> filtrarMaterias(Long id);
+	
 	MateriaDTO findById(Long id);
 	
 	void save(MateriaDTO materiaDTO);

@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unju.fi.dto.AlumnoDTO;
 
 import ar.edu.unju.fi.service.AlumnoService;
+import ar.edu.unju.fi.service.ICarreraService;
 import ar.edu.unju.fi.service.IMateriaService;
 import jakarta.validation.Valid;
 
@@ -27,6 +28,9 @@ public class AlumnoController {
 	
     @Autowired
     private AlumnoService alumnoService;
+    
+    @Autowired
+    private ICarreraService carreraService;
 
     @Autowired
     private AlumnoDTO alumnoDTO;
@@ -42,6 +46,7 @@ public class AlumnoController {
     public String getNuevoAlumnoPage(Model model) {
         boolean editar = false;
         model.addAttribute("alumno", alumnoDTO);
+        model.addAttribute("carreras",carreraService.findAll());
         model.addAttribute("editar", editar);
         model.addAttribute("titulo", "Nuevo Alumno");
         return "formularioalumno";
@@ -101,7 +106,7 @@ public class AlumnoController {
 		AlumnoDTO alumnoElegidoDTO = alumnoService.getAlumnoById(id);
 		
 		model.addAttribute("alumno",alumnoElegidoDTO);
-		model.addAttribute("materias",materiaService.findAll());
+		model.addAttribute("materias",materiaService.filtrarMaterias(alumnoElegidoDTO.getCarrera().getId())); //recupera el id de la carrera del alumno //);
 		model.addAttribute("titulo", "Elegir Materia");		
 		return "inscripcionmateria";
 	}

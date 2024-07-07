@@ -29,6 +29,13 @@
                         <p class="card-text">
                             <i class="fas fa-id-badge"></i> Legajo: <span data-th-text="${doce.legajo}"></span>
                         </p>
+                        
+                                   
+                         <p class="card-text">
+                            <i class="fas fa-book"></i> Materia: <span data-th-text="${doce.materia.nombre}"></span>
+                        </p>    
+                        
+                        
                         <p class="card-text">
                             <i class="fas fa-envelope"></i> Correo: <span data-th-text="${doce.email}"></span>
                         </p>
@@ -36,10 +43,10 @@
                             <i class="fas fa-phone"></i> Teléfono:  +54 <span data-th-text="${doce.telefono}"></span>
                         </p>
                         <a class="btn btn-warning" data-th-href="@{/docente/modificar/} + ${doce.id}">
-                            <i class="fas fa-user-edit"></i> <small class="text-muted">Editar</small>
+                            <i class="fas fa-user-edit"></i> <small class="text-muted"></small>
                         </a>
                         <a class="btn btn-danger" data-th-href="@{/docente/eliminar/} + ${doce.id}">
-                            <i class="fas fa-user-times"></i> <small class="text-muted">Eliminar</small>
+                            <i class="fas fa-user-times"></i> <small class="text-muted"></small>
                         </a>
                     </div>
                 </div> 

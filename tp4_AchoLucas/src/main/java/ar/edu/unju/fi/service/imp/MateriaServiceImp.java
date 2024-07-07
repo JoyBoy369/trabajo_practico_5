@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.service.imp;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
@@ -41,6 +42,21 @@ public class MateriaServiceImp implements IMateriaService {
 		LOGGER.info("Cantidad de materias en el listado: "+materiasDTO.size()+".");
 		return materiasDTO;
 	}
+	
+	
+	@Override
+	public List<MateriaDTO> filtrarMaterias(Long idCarrera) {
+	    List<Materia> materias = materiaRepository.findAll();
+
+	    // Filtra las materias por idCarrera //
+	    List<Materia> materiasPorCarrera = materias.stream()
+	            .filter(materia -> materia.getCarrera() != null && materia.getCarrera().getId().equals(idCarrera))
+	            .filter(Materia :: isEstado) //estado sea true //
+	            .collect(Collectors.toList());
+
+	    return materiaMapper.toMateriaDTOList(materiasPorCarrera);
+	}
+	
 
 	@Override
 	public MateriaDTO findById(Long id) {

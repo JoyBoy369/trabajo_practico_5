@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.model.Carrera;
 import ar.edu.unju.fi.model.Docente;
+import ar.edu.unju.fi.model.Materia;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -49,5 +50,7 @@ public class MateriaDTO {
 	    
 	    private String estado;
 	    private List<Alumno> alumnos;
+	    
+	    private Materia materia;
 
 }
