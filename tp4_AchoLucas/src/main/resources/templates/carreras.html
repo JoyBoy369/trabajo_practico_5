@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head data-th-replace="~{/layouts/header :: head}">
+    <meta charset="UTF-8">
+    <title data-th-text="${titulo}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:rel="stylesheet" type="text/css" data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link th:rel="stylesheet" data-th-href="@{/css/estilos.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </head>
 <body>
 <div data-th-replace="~{/layouts/header :: header}"></div>
 
-
-	
-	 <div class=" mt-5 container d-flex justify-content-center align-items-center">
-		<div class="text-center">
-		   <a  data-th-href="@{/carrera/nuevo}" class="btn btn-success">Nueva Carrera</a>
-		</div>
+<div id="content-wrapper" class="container d-flex justify-content-end align-items-center mt-5">
+    <div class="text-center">
+        <a data-th-href="@{/carrera/nuevo}" class="btn btn-success">
+            <i class="fas fa-plus-circle"></i>  Nueva Carrera.
+        </a>
     </div>
-	
-	 <div class="container mt-5">
-        <div class="row">
-        	
-        
-            <div class="card m-3 d-inline-block col-lg-5" data-th-each="carre: ${carreras}">
-                <div class="row g-0">
-                    <div class="col-md-4 d-flex justify-content-center align-items-center">
-                        <img th:src="@{/images/uni.png}" class="img-fluid rounded-start" alt="...">
-                    </div>
-                   
-                    <div class="col-md-8 d-flex flex-column justify-content-center">
-                        <div class="card-body">
-                           <h5 class="card-title"><span data-th-text="${carre.nombre}"></span></h5>
-                            <p class="card-text">Duracion: <span data-th-text="${carre.cantidadAnios}+' años '"></span></p>
-                            <p class="card-text">Codigo: 0<span data-th-text="${carre.codigo}"></span></p>
-                            
-                            <p class="card-text"><span th:if="${carre.estado}">Estado: Activa</span></p>
-                            <p class="card-text"><span th:if="${!carre.estado}">Estado: Inactiva</span></p>
-                            
-                            
-                            <a class="btn btn-warning" data-th-href="@{/carrera/modificar/}+${carre.id}"><small class="text-muted">Editar</small></a>
-                            <a class="btn btn-danger" data-th-href="@{/carrera/eliminar/}+${carre.id}"><small class="text-muted">Eliminar</small></a>
-                        </div>
-                    </div> 
+</div>
+
+<div id="content-wrapper" class="container mt-5">
+    <div class="row">
+        <div class="card m-3 d-inline-block col-lg-5" data-th-each="carre: ${carreras}">
+            <div class="row g-0">
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                    <img th:src="@{/images/uni.png}" id="uniImagen" class="img-fluid rounded-start" alt="...">
                 </div>
+                <div class="col-md-8 d-flex flex-column justify-content-center">
+                    <div class="card-body">
+                        <h5 class="card-title"><span data-th-text="${carre.nombre}"></span></h5>
+                        <p class="card-text">Duración: <span data-th-text="${carre.cantidadAnios}+' años '"></span></p>
+                        <p class="card-text">Código: 0<span data-th-text="${carre.codigo}"></span></p>
+                        <p class="card-text"><span th:if="${carre.estado}">Estado: Activa</span></p>
+                        <p class="card-text"><span th:if="${!carre.estado}">Estado: Inactiva</span></p>
+                        <a class="btn btn-warning" data-th-href="@{/carrera/modificar/}+${carre.id}">
+                            <i class="fas fa-edit"></i><small class="text-muted">Editar</small>
+                        </a>
+                        <a class="btn btn-danger" data-th-href="@{/carrera/eliminar/}+${carre.id}">
+                            <i class="fas fa-trash-alt"></i><small class="text-muted">Eliminar</small>
+                        </a>
+                    </div>
+                </div> 
             </div>
         </div>
     </div>
-
-
+</div>
 
 <footer data-th-replace="~{/layouts/footer :: footer}"></footer>
 

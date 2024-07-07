@@ -19,8 +19,8 @@
             <div class="d-flex align-items-center">
                 <img th:src="@{/images/logo2.png}" alt="Logo" width="170" height="70" class="mr-3">
                 <div>
-                    <h1 class="h4 mb-0">Universidad Nacional de Jujuy</h1>
-                    <p class="mb-0">Innovación y Conocimiento para un Mundo Mejor</p>
+                    <h1 class="h4 mb-0">Universidad Nacional de Jujuy.</h1>
+                    <p class="mb-0">Innovación y Conocimiento para un Mundo Mejor.</p>
                 </div>
             </div>
         </div>
@@ -53,15 +53,25 @@
                             <li><a class="dropdown-item" data-th-href="@{/carrera/nuevo}"><i class="fas fa-plus"></i> Nueva Carrera</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-th-href="@{/docente/listado}"><i class="fas fa-chalkboard-teacher"></i> Docentes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-th-href="@{/materia/listado}"><i class="fas fa-book-open"></i> Materias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-user-plus"></i> Inscribir Alumno</a>
-                    </li>
+                    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownDocente" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-chalkboard-teacher"></i> Docentes
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdownDocente">
+        <li><a class="dropdown-item" data-th-href="@{/docente/listado}"><i class="fas fa-list"></i> Listado de Docentes</a></li>
+        <li><a class="dropdown-item" data-th-href="@{/docente/nuevo}"><i class="fas fa-user-plus"></i> Nuevo Docente</a></li>
+    </ul>
+</li>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMateria" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-book-open"></i> Materias
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMateria">
+        <li><a class="dropdown-item" data-th-href="@{/materia/listado}"><i class="fas fa-list"></i> Listado de Materias</a></li>
+        <li><a class="dropdown-item" data-th-href="@{/materia/nuevo}"><i class="fas fa-plus"></i> Nueva Materia</a></li>
+    </ul>
+</li>
+             
                     <li class="nav-item">
                         <a class="nav-link" data-th-href="@{/materiaConsultar/listado}"><i class="fas fa-search"></i> Consultar Alumno</a>
                     </li>
