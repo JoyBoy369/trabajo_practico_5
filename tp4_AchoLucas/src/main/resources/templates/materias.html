@@ -25,8 +25,14 @@
                         <h5 class="card-title">
                             <span data-th-text="${mate.nombre}"></span>
                         </h5>
+                         <p class="card-text">
+                            <i class="fas fa-graduation-cap"></i> Carrera: <span data-th-text="${mate.carrera.nombre}"></span>
+                        </p>                      
                         <p class="card-text">
                             <i class="fas fa-book"></i> Curso: <span data-th-text="${mate.curso}"></span>
+                        </p>
+                         <p class="card-text">
+                            <i class="fas fa-chalkboard-teacher"></i> Docente: <span data-th-text="${mate.docente.nombre} + ' '"></span><span data-th-text="${mate.docente.apellido}"></span>
                         </p>
                         <p class="card-text">
                             <i class="fas fa-clock"></i> Carga Horaria: <span data-th-text="${mate.cantidadHoras}"></span>
@@ -34,18 +40,19 @@
                         <p class="card-text">
                             <i class="fas fa-school"></i> Modalidad: <span data-th-text="${mate.modalidad}"></span>
                         </p>
-                        <p class="card-text">
-                            <i class="fas fa-chalkboard-teacher"></i> Docente: <span data-th-text="${mate.docente.nombre} + ' '"></span><span data-th-text="${mate.docente.apellido}"></span>
-                        </p>
-                        <p class="card-text">
-                            <i class="fas fa-graduation-cap"></i> Carrera: <span data-th-text="${mate.carrera.nombre}"></span>
-                        </p>
+                       
+                       
                         <a class="btn btn-warning" data-th-href="@{/materia/modificar/} + ${mate.id}">
                             <i class="fas fa-user-edit"></i> <small class="text-muted">Editar</small>
                         </a>
                         <a class="btn btn-danger" data-th-href="@{/materia/eliminar/} + ${mate.id}">
                             <i class="fas fa-trash"></i> <small class="text-muted">Eliminar</small>
                         </a>
+                        
+                        <a class="btn btn-success" data-th-href="@{/materia/eliminar/} + ${mate.id}">
+                            <i class="fas fa-book"></i> <small class="text-muted">Planilla</small>
+                        </a>
+                        
                     </div>
                 </div> 
             </div>
