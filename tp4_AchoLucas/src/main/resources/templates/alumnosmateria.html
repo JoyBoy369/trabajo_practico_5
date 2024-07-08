@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head data-th-replace="~{/layouts/header :: head}">
+
+</head>
+<body>
+<div data-th-replace="~{/layouts/header :: header}"></div>
+
+<div class=" mt-5 container d-flex justify-content-center align-items-center">
+	<div class="text-center">
+	   <h1>Alumnos en la materia <span data-th-text="${materia.nombre}"></span></h1>
+	</div>
+</div>
+
+<div class="row">
+		<div class="col col-sm-12 fondo-form p-5">
+			<div class="row mb-5">
+				
+				<table class="table table-striped table-hover">
+					<tr>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>LU</th>
+						<th>DNI</th>
+						<th>Telefono</th>
+						<th>Correo</th>
+						<th>Fecha de Nacimiento</th>
+						<th>Domicilio</th>
+						<th>Carrera</th>
+					</tr>
+					<tr data-th-each="alu : ${alumnos}">
+						<td data-th-text="${alu.nombre}"></td>
+						<td data-th-text="${alu.apellido}"></td>
+						<td data-th-text="${alu.lu}"></td>
+						<td data-th-text="${alu.dni}"></td>
+						<td data-th-text="${alu.telefono}"></td>
+						<td data-th-text="${alu.email}"></td>
+						<td data-th-text="${alu.fechaNacimiento}"></td>
+						<td data-th-text="${alu.domicilio}"></td>
+						<td data-th-text="${alu.carrera.nombre}"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
+
+<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

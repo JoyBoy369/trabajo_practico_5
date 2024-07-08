@@ -37,7 +37,6 @@ public class MateriaController {
 	@Autowired
 	private IDocenteService docenteService;
 	
-	
 	@Autowired
 	private MateriaDTO materiaDTO;
 	
@@ -124,5 +123,14 @@ public class MateriaController {
 		return "redirect:/materia/listado";
 		
 	}
-
+	
+	@GetMapping("/lda/{id}")
+	public String getAlumnosPage(@PathVariable(value="id") Long id, Model model) {
+		
+		model.addAttribute("alumnos", materiaService.findById(id).getAlumnos());
+		model.addAttribute("titulo", "Listado de alumnos");
+		model.addAttribute("materia", materiaService.findById(id));
+		
+		return "alumnosmateria";
+	}
 }

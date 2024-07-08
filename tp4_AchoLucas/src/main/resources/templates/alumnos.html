@@ -80,7 +80,7 @@
                             <a class="btn btn-danger mt-2" data-th-href="@{/alumno/eliminar/} + ${alum.id}">
                                 <i class="fas fa-user-times"></i> <small class="text-muted" style="color: white !important;"></small>
                             </a>
-                            <a class="btn btn-success mt-2" data-th-href="@{/alumno/asignar/} + ${alum.id}">
+                            <a class="btn btn-success mt-2" data-th-href="@{/alumno/} + ${alum.id} + @{/materias}">
                                 <i class="fas fa-book"></i> <small class="text-muted" style="color: white !important;">Materias</small>
                             </a>
                         </div>

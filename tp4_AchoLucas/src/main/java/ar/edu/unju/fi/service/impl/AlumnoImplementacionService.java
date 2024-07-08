@@ -1,8 +1,8 @@
 package ar.edu.unju.fi.service.impl;
 
-
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
@@ -76,4 +76,19 @@ public class AlumnoImplementacionService implements AlumnoService {
 		alumnoRepository.save(alumno);
 		LOGGER.info("Alumno eliminado correctamente.");
     }
+    
+    @Override
+	public List<AlumnoDTO> filtrarAlumnos(Long idCarrera) {
+	    List<Alumno>  alumnos = alumnoRepository.findAll();
+
+	    List<Alumno> alumnosPorCarrera = alumnos.stream()
+	            .filter(alumno -> alumno.getCarrera() != null && alumno.getCarrera().getId().equals(idCarrera))
+	            .filter(Alumno :: isEstado)
+	            .collect(Collectors.toList());
+
+	    LOGGER.info("alumnos: "+alumnosPorCarrera.size());
+	    return alumnoMapper.toAlumnoDTOList(alumnosPorCarrera);
+	}
+	
+    
 }

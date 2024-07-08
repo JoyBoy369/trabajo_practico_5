@@ -34,7 +34,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><span data-th-text="${carre.nombre}"></span></h5>
                         <p class="card-text">Duración: <span data-th-text="${carre.cantidadAnios}+' años '"></span></p>  
-                        <a class="btn btn-success" data-th-href="@{/carrera/eliminar/}+${carre.id}">
+                        <a class="btn btn-success" data-th-href="@{/carrera/pde/}+${carre.id}">
                          <i class="fas fa-book"></i><small class="text-muted">Plan de estudio</small>
                         </a> 
                         <p class="card-text">Código: 0<span data-th-text="${carre.codigo}"></span></p>                                    
@@ -47,7 +47,7 @@
                             <i class="fas fa-trash-alt"></i><small class="text-muted"></small>
                         </a>
                         
-                         <a class="btn btn-success" data-th-href="@{/carrera/eliminar/}+${carre.id}">
+                         <a class="btn btn-success" data-th-href="@{/carrera/lda/}+${carre.id}">
                             <i class="fas fa-book"></i><small class="text-muted">alumnos</small>
                         </a>
                         

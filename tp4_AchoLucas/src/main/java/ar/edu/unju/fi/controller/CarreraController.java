@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.dto.CarreraDTO;
-
+import ar.edu.unju.fi.dto.MateriaDTO;
+import ar.edu.unju.fi.service.AlumnoService;
 import ar.edu.unju.fi.service.ICarreraService;
+import ar.edu.unju.fi.service.IMateriaService;
+import ar.edu.unju.fi.service.impl.AlumnoImplementacionService;
 import jakarta.validation.Valid;
 
 @Controller
@@ -25,6 +28,12 @@ public class CarreraController {
 	
 	@Autowired
 	private ICarreraService carreraService;
+	
+	@Autowired
+	private AlumnoImplementacionService alumnoService;
+	
+	@Autowired
+	private IMateriaService materiaService;
 	
 	@GetMapping("/listado")
 	public String getCarrerasList(Model model) {
@@ -98,6 +107,26 @@ public class CarreraController {
 		
 		return "redirect:/carrera/listado";
 		
+	}
+	
+	@GetMapping("/pde/{id}")
+	public String getMateriasPage(@PathVariable(value="id") Long id, Model model) {
+		
+		model.addAttribute("materias", materiaService.filtrarMaterias(id));
+		model.addAttribute("titulo", "Plan de estudios");
+		model.addAttribute("carrera", carreraService.findById(id));
+		
+		return "materiascarrera";
+	}
+	
+	@GetMapping("/lda/{id}")
+	public String getAlumnosPage(@PathVariable(value="id") Long id, Model model) {
+		
+		model.addAttribute("alumnos", alumnoService.filtrarAlumnos(id));
+		model.addAttribute("titulo", "Listado de alumnos");
+		model.addAttribute("carrera", carreraService.findById(id));
+		
+		return "alumnoscarrera";
 	}
 
 }

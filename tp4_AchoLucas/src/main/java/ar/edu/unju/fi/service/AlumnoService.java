@@ -16,4 +16,6 @@ public interface AlumnoService {
     void updateAlumno(AlumnoDTO alumnoDTO);
     
     void deleteAlumno(AlumnoDTO alumnoDTO);
+    
+    List<AlumnoDTO> filtrarAlumnos(Long idCarrera);
 }

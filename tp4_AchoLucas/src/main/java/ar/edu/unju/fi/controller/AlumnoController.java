@@ -71,6 +71,7 @@ public class AlumnoController {
         AlumnoDTO alumnoEncontradoDTO = alumnoService.getAlumnoById(id);
         model.addAttribute("editar", editar);
         model.addAttribute("alumno", alumnoEncontradoDTO);
+        model.addAttribute("carreras",carreraService.findAll());
         model.addAttribute("titulo", "Modificar Alumno");
         return "formularioalumno";
     }
@@ -85,9 +86,7 @@ public class AlumnoController {
     	}else {
     		alumnoService.updateAlumno(alumnoDTO);
     		return "redirect:/alumno/listado";
-    	}
-        
-        
+    	} 
         
     }
     
@@ -109,5 +108,14 @@ public class AlumnoController {
 		model.addAttribute("materias",materiaService.filtrarMaterias(alumnoElegidoDTO.getCarrera().getId())); //recupera el id de la carrera del alumno //);
 		model.addAttribute("titulo", "Elegir Materia");		
 		return "inscripcionmateria";
+	}
+	
+	@GetMapping("/{id}/materias")
+	public String getMateriasPage(Model model, @PathVariable(value="id") Long id) {
+		AlumnoDTO alumno = alumnoService.getAlumnoById(id);
+		model.addAttribute("alumno",alumno);
+		model.addAttribute("materias", alumno.getMaterias());
+		model.addAttribute("titulo", "Materias del Alumno");
+		return "materiasalumno";
 	}
 }
