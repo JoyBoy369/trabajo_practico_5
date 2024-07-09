@@ -16,32 +16,45 @@
         <form data-th-action="${editar}?@{/docente/modificar} : @{/docente/guardar}" th:object="${docente}" method="post">
         
             <div class="row mb-3 justify-content-center"th:if="${editar}">
-                <label for="codigo">Legajo:</label>
+                <label for="codigo">ID:</label>
                 <div>
                 	
-                	 <input type="number" th:readonly="${editar}?'readonly'" class="form-control" id="legajo" th:field="*{legajo}">
+                	 <input type="number" th:readonly="${editar}?'readonly'" class="form-control" id="legajo" th:field="*{id}">
                 </div>
                
             </div>
             
             <div class="form-group">
+                <label for="Legajo">Legajo:</label>
+                <input type="number" class="form-control" id="nombre" th:field="*{legajo}" 	th:classappend="${#fields.hasErrors('legajo')} ? 'is-invalid' : ''" maxlength="2"
+				minlength="2" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+				<p class="form-text text-danger" th:if="${#fields.hasErrors('legajo')}" th:errors="*{legajo}"></p>
+            </div>
+            
+            <div class="form-group">
                 <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''" maxlength="20"
+				minlength="2" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+				<p class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
             </div>
             
              <div class="form-group">
                 <label for="nombre">Apellido:</label>
-                <input type="text" class="form-control" id="apellido" th:field="*{apellido}" required>
+                <input type="text" class="form-control" id="apellido" th:field="*{apellido}" th:classappend="${#fields.hasErrors('apellido')} ? 'is-invalid' : ''" maxlength="20"
+				minlength="2" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+				<p class="form-text text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></p>
             </div>
             
            <div class="form-group">
                 <label for="nombre">Correo:</label>
-                <input type="email" class="form-control" id="email" th:field="*{email}" required>
+                <input type="email" class="form-control" id="email" th:field="*{email}" th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''">
+				<p class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
             </div>
             
             <div class="form-group">
                 <label for="nombre">Telefono:</label>
-                <input type="number" class="form-control" id="telefono" th:field="*{telefono}" required>
+                <input type="number" class="form-control" id="telefono" th:field="*{telefono}" th:classappend="${#fields.hasErrors('telefono')} ? 'is-invalid' : ''">
+				<p class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></p>
             </div>
             
             <br>

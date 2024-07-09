@@ -16,22 +16,34 @@
         <form data-th-action="${editar}?@{/carrera/modificar} : @{/carrera/guardar}" th:object="${carrera}" method="post">
         
             <div class="row mb-3 justify-content-center"th:if="${editar}">
-                <label for="codigo">Código</label>
+                <label for="id">ID:</label>
                 <div>
                 	
-                	 <input type="number" th:readonly="${editar}?'readonly'" class="form-control" id="codigo" th:field="*{codigo}">
+                	 <input type="number" th:readonly="${editar}?'readonly'" class="form-control" id="codigo" th:field="*{id}">
                 </div>
                
             </div>
             
             <div class="form-group">
+                <label for="nombre">Codigo:</label>
+                <input type="number" class="form-control" id="nombre" th:field="*{codigo}" 	th:classappend="${#fields.hasErrors('codigo')} ? 'is-invalid' : ''" maxlength="2"
+				minlength="2" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+				<p class="form-text text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></p>
+            </div>
+            
+            
+            <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''" maxlength="30"
+				minlength="2" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+				<p class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
             </div>
             
             <div class="form-group">
                 <label for="duracion">Duración de la Carrera</label>
-                <input type="number" class="form-control" id="duracion" th:field="*{cantidadAnios}" required>
+                <input type="number" class="form-control" id="duracion" th:field="*{cantidadAnios}" th:classappend="${#fields.hasErrors('cantidadAnios')} ? 'is-invalid' : ''" maxlength="1"
+				oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+				<p class="form-text text-danger" th:if="${#fields.hasErrors('cantidadAnios')}" th:errors="*{cantidadAnios}"></p>
             </div>
             
             <div class="form-group" th:if="${editar}" >

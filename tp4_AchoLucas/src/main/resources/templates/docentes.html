@@ -1,47 +1,76 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head data-th-replace="~{/layouts/header :: head}">
-
+    <meta charset="UTF-8">
+    <title>Título de la página</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:rel="stylesheet" type="text/css" href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <!-- Otros estilos -->
+    <style>
+        /* Estilos adicionales si es necesario */
+    </style>
 </head>
 <body>
 <div data-th-replace="~{/layouts/header :: header}"></div>
 
+<!-- Botón "Nuevo Docente" alineado a la derecha -->
+<div class="mt-5 container d-flex justify-content-end align-items-center">
+    <a data-th-href="@{/docente/nuevo}" class="btn btn-success">
+        <i class="fas fa-user-plus"></i> Nuevo Docente
+    </a>
+</div>
 
-	
-	 <div class=" mt-5 container d-flex justify-content-center align-items-center">
-		<div class="text-center">
-		   <a  data-th-href="@{/docente/nuevo}" class="btn btn-success">Nuevo Docente</a>
-		</div>
-    </div>
-	
-	 <div class="container mt-5">
-        <div class="row">
-        	
-        
-            <div class="card m-3 d-inline-block col-lg-5" data-th-each="doce: ${docentes}">
-                <div class="row g-0">
-                    <div class="col-md-4 d-flex justify-content-center align-items-center">
-                        <img th:src="@{/images/docente.png}" class="img-fluid rounded-start" alt="...">
-                    </div>
-                   
-                    <div class="col-md-8 d-flex flex-column justify-content-center">
-                        <div class="card-body">
-                            <h5 class="card-title"><span data-th-text="${doce.nombre}+' '"></span><span data-th-text="${doce.apellido}"></span></h5>
-                            
-                            <p class="card-text">Legajo: <span data-th-text="${doce.legajo}"></span></p>
-                            <p class="card-text">Correo: <span data-th-text="${doce.email}"></span></p>
-                            <p class="card-text">Telefono: +54 <span data-th-text="${doce.telefono}"></span></p>
-                            
-                            <a class="btn btn-warning" data-th-href="@{/docente/modificar/}+${doce.legajo}"><small class="text-muted">Editar</small></a>
-                            <a class="btn btn-danger" data-th-href="@{/docente/eliminar/}+${doce.legajo}"><small class="text-muted">Eliminar</small></a>
+<div class="container mt-4">
+    <div class="row">
+        <div class="card m-3 d-inline-block col-lg-5" data-th-each="doce: ${docentes}">
+            <div class="row g-0">
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                    <img th:src="@{/images/docente.png}" class="img-fluid rounded-start" id="docenteImagen" alt="...">
+                </div>
+                <div class="col-md-8 d-flex flex-column justify-content-center">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <span data-th-text="${doce.nombre} + ' '"></span>
+                            <span data-th-text="${doce.apellido}"></span>
+                        </h5>
+                        <p class="card-text">
+                            <i class="fas fa-id-badge"></i> Legajo: <span data-th-text="${doce.legajo}"></span>
+                        </p>
+                        <hr> <!-- Línea separadora -->
+                        <p class="card-text">
+                            <i class="fas fa-book"></i> Materia: <span data-th-text="${doce.materia.nombre}"></span>
+                        </p>
+                        <hr> <!-- Línea separadora -->
+                        <!-- Botón "Ver más" -->
+                        <button class="btn btn-primary mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${doce.id}" aria-expanded="false" aria-controls="collapse${doce.id}">
+                            Ver más
+                        </button>
+
+                        <!-- Detalles adicionales ocultos -->
+                        <div class="collapse mt-3" id="collapse${doce.id}">
+                            <hr> <!-- Línea separadora -->
+                            <p class="card-text">
+                                <i class="fas fa-envelope"></i> Correo: <span data-th-text="${doce.email}"></span>
+                            </p>
+                            <hr> <!-- Línea separadora -->
+                            <p class="card-text">
+                                <i class="fas fa-phone"></i> Teléfono: +54 <span data-th-text="${doce.telefono}"></span>
+                            </p>
+                            <div class="btn-group mt-3" role="group" aria-label="Botones de acción">
+                                <a class="btn btn-warning" data-th-href="@{/docente/modificar/} + ${doce.id}">
+                                    <i class="fas fa-user-edit"></i> Editar
+                                </a>
+                                <a class="btn btn-danger" data-th-href="@{/docente/eliminar/} + ${doce.id}">
+                                    <i class="fas fa-user-times"></i> Eliminar
+                                </a>
+                            </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-
+</div>
 
 <footer data-th-replace="~{/layouts/footer :: footer}"></footer>
 

@@ -1,89 +1,83 @@
 package ar.edu.unju.fi.model;
 
-import org.springframework.stereotype.Component;
 
-@Component
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "materia")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Materia {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "mate_id")
+    private Long id;
+	
+	@Column(name = "mate_cod")
     private int codigo;
+	
+	@Column(name = "mate_nombre")
     private String nombre;
+	
+	@Column(name = "mate_curso")
     private String curso;
+	
+	@Column(name = "mate_cantidadHoras")
     private int cantidadHoras;
+	
+	@Column(name = "mate_modalidad")
     private String modalidad; // virtual o presencial
+	
+	@Column(name = "mate_estado")
+	private boolean estado;
+	
+	@ManyToMany
+	@JoinTable(name = "materias_alumnos",
+	joinColumns = @JoinColumn(name = "mate_id"),
+	inverseJoinColumns = @JoinColumn(name = "alu_id"))
+	private List<Alumno> alumnos = new ArrayList<Alumno>();
+	
+	
+	@OneToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+	@JoinColumn(name = "doce_id")
     private Docente docente;
+	
+	@ManyToOne
+	@JoinColumn(name = "carre_id")
     private Carrera carrera;
-    
-    
-    
-    // Constructor 
-    public Materia() {}
-    
-    
- 
-    public Materia(int codigo, String nombre, String curso, int cantidadHoras, String modalidad, Docente docente, Carrera carrera) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.curso = curso;
-        this.cantidadHoras = cantidadHoras;
-        this.modalidad = modalidad;
-        this.docente = docente;
-        this.carrera = carrera;
-    }
 
-    // Getters y setters
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getCurso() {
-        return curso;
-    }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
-    }
-
-    public int getCantidadHoras() {
-        return cantidadHoras;
-    }
-
-    public void setCantidadHoras(int cantidadHoras) {
-        this.cantidadHoras = cantidadHoras;
-    }
-
-    public String getModalidad() {
-        return modalidad;
-    }
-
-    public void setModalidad(String modalidad) {
-        this.modalidad = modalidad;
-    }
-
-    public Docente getDocente() {
-        return docente;
-    }
-
-    public void setDocente(Docente docente) {
-        this.docente = docente;
-    }
-
-    public Carrera getCarrera() {
-        return carrera;
-    }
-
-    public void setCarrera(Carrera carrera) {
-        this.carrera = carrera;
-    }
+	public Materia(int codigo, String nombre, String curso, int cantidadHoras, String modalidad, boolean estado,
+			List<Alumno> alumnos, Docente docente, Carrera carrera) {
+		super();
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.curso = curso;
+		this.cantidadHoras = cantidadHoras;
+		this.modalidad = modalidad;
+		this.estado = estado;
+		this.alumnos = alumnos;
+		this.docente = docente;
+		this.carrera = carrera;
+	}
+	
 }

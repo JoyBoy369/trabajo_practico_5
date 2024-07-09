@@ -32,7 +32,7 @@ public class CollectionCarrera {
 	}
 	
 	
-	public static void agregarCarrera(Carrera carrera) {
+	public static boolean agregarCarrera(Carrera carrera) {
 				
 		//Verifica el ultimo codigo del Array + 1 para guardar uno nuevo//
 		int ultimoCodigo = 0;
@@ -42,7 +42,7 @@ public class CollectionCarrera {
             }
         }
         carrera.setCodigo(ultimoCodigo + 1);
-        carreras.add(carrera);
+        return carreras.add(carrera);
 
 	}
 	
@@ -61,10 +61,8 @@ public class CollectionCarrera {
 			if(c.getCodigo() == carrera.getCodigo()) {
 				c.setNombre(carrera.getNombre());
 				c.setCantidadAnios(carrera.getCantidadAnios());  
-				c.setEstado(carrera.getEstado());  
+				c.setEstado(carrera.isEstado());  
 				
-			}else {
-				System.out.println("No se encontro");
 			}
 		}	 		 				
 	}

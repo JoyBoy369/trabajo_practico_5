@@ -32,10 +32,13 @@ public class CollectionMateria {
 		
 		if(materias.isEmpty()) {
 			
-			// cargar //
-			materias.add(new Materia(1,"Programacion Estructurada","1er Año",89,"Presencial",docente1,carrera1));
-			materias.add(new Materia(2, "Bases de Datos", "2do Año", 75, "Virtual", docente2, carrera2));
-		    materias.add(new Materia(3, "Redes de Computadoras", "3er Año", 60, "Presencial", docente3, carrera3));
+			/*
+			 * // cargar // materias.add(new
+			 * Materia(1,"Programacion Estructurada","1er Año",89,"Presencial",docente1,
+			 * carrera1)); materias.add(new Materia(2, "Bases de Datos", "2do Año", 75,
+			 * "Virtual", docente2, carrera2)); materias.add(new Materia(3,
+			 * "Redes de Computadoras", "3er Año", 60, "Presencial", docente3, carrera3));
+			 */
 		}
 
 		return materias;
@@ -65,17 +68,7 @@ public class CollectionMateria {
 	
 	public static void modificarMateria(Materia materia) {
 		
-		for(Materia m : materias) {
-			if(m.getCodigo() == materia.getCodigo()) {
-				m.setNombre(materia.getNombre());
-				m.setCurso(materia.getCurso());
-				m.setCantidadHoras(materia.getCantidadHoras());
-				m.setModalidad(materia.getModalidad());
-				m.setDocente(materia.getDocente());
-				m.setCarrera(materia.getCarrera());
-								
-			}
-		}	 		 				
+			 				
 	}
 	
 	public static Materia buscarMateria(int codigo) {

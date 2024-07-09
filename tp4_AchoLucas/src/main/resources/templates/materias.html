@@ -1,50 +1,87 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head data-th-replace="~{/layouts/header :: head}">
-
+    <meta charset="UTF-8">
+    <title data-th-text="${titulo}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:rel="stylesheet" type="text/css" data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link th:rel="stylesheet" data-th-href="@{/css/estilos.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/luniverse-buttons/1.1.3/css/buttons.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div data-th-replace="~{/layouts/header :: header}"></div>
 
+<!-- Botón "Nueva Materia" alineado a la derecha -->
+<div class="mt-5 container d-flex justify-content-end align-items-center">
+    <a data-th-href="@{/materia/nuevo}" class="btn btn-success">
+        <i class="fas fa-plus"></i> Nueva Materia.
+    </a>
+</div>
 
-	
-	 <div class=" mt-5 container d-flex justify-content-center align-items-center">
-		<div class="text-center">
-		   <a  data-th-href="@{/materia/nuevo}" class="btn btn-success">Nueva Materia</a>
-		</div>
-    </div>
-	
-	 <div class="container mt-5">
-        <div class="row">
-        	
-        
-            <div class="card m-3 d-inline-block col-lg-5" data-th-each="mate: ${materias}">
-                <div class="row g-0">
-                    <div class="col-md-4 d-flex justify-content-center align-items-center">
-                        <img th:src="@{/images/uni.png}" class="img-fluid rounded-start" alt="...">
-                    </div>
-                   
-                    <div class="col-md-8 d-flex flex-column justify-content-center">
-                        <div class="card-body">
-                           <h5 class="card-title"><span data-th-text="${mate.nombre}"></span></h5>
-                            <p class="card-text">Curso: <span data-th-text="${mate.curso}"></span></p>
-                            <p class="card-text">Carga horaria: <span data-th-text="${mate.cantidadHoras}"></span></p>
-                            <p class="card-text">Modalidad: <span data-th-text="${mate.modalidad}"></span></p>
-                            <p class="card-text">Docente: <span data-th-text="${mate.docente.nombre}+' '"></span><span data-th-text="${mate.docente.apellido}"></span></p>
-                            <p class="card-text">Carrera: <span data-th-text="${mate.carrera.nombre}"></span></p>
-                            
-                            
-                            
-                            <a class="btn btn-warning" data-th-href="@{/materia/modificar/}+${mate.codigo}"><small class="text-muted">Editar</small></a>
-                            <a class="btn btn-danger" data-th-href="@{/materia/eliminar/}+${mate.codigo}"><small class="text-muted">Eliminar</small></a>
-                        </div>
-                    </div> 
+<div class="container mt-4">
+    <div class="row">
+        <div class="card m-3 d-inline-block col-lg-5" data-th-each="mate: ${materias}">
+            <div class="row g-0">
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                    <i class="fas fa-book fa-5x" id="iconMateria"></i>
                 </div>
+                <div class="col-md-8 d-flex flex-column justify-content-center">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <span data-th-text="${mate.nombre}"></span>
+                        </h5>
+                        <hr> <!-- Línea separadora -->
+                        <p class="card-text">
+                            <i class="fas fa-graduation-cap"></i> Carrera: <span data-th-text="${mate.carrera.nombre}"></span>
+                        </p>
+                        <hr> <!-- Línea separadora -->
+                        <p class="card-text">
+                            <i class="fas fa-book"></i> Curso: <span data-th-text="${mate.curso}"></span>
+                        </p>
+
+                        <!-- Descripción adicional oculta -->
+                        <div class="collapse mt-3" id="collapse${mate.id}">
+                            <hr> <!-- Línea separadora -->
+                            <p class="card-text">
+                                <i class="fas fa-chalkboard-teacher"></i> Docente: <span data-th-text="${mate.docente.nombre} + ' '"></span><span data-th-text="${mate.docente.apellido}"></span>
+                            </p>
+                            <hr> <!-- Línea separadora -->
+                            <p class="card-text">
+                                <i class="fas fa-clock"></i> Carga Horaria: <span data-th-text="${mate.cantidadHoras}"></span>
+                            </p>
+                            <hr> <!-- Línea separadora -->
+                            <p class="card-text">
+                                <i class="fas fa-school"></i> Modalidad: <span data-th-text="${mate.modalidad}"></span>
+                            </p>
+                            
+                            <!-- Botones de acción -->
+                       <div class="btn-group mt-3" role="group" aria-label="Botones de acción">
+    <a class="btn btn-warning luniverse-btn" data-th-href="@{/materia/modificar/} + ${mate.id}">
+        <i class="fas fa-user-edit"></i> Editar
+    </a>
+    <a class="btn btn-danger luniverse-btn" data-th-href="@{/materia/eliminar/} + ${mate.id}">
+        <i class="fas fa-trash"></i> Eliminar
+    </a>
+    <a class="btn btn-primary luniverse-btn" data-th-href="@{/materia/lda/} + ${mate.id}">
+        <i class="fas fa-book"></i> Planilla
+    </a>
+</div>
+                        </div>
+
+                        <!-- Botón "Ver más" -->
+                        <button class="btn btn-primary mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${mate.id}" aria-expanded="false" aria-controls="collapse${mate.id}">
+                            Ver más
+                        </button>
+                    </div>
+                </div> 
             </div>
         </div>
     </div>
-
-
+</div>
 
 <footer data-th-replace="~{/layouts/footer :: footer}"></footer>
 

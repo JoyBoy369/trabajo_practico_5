@@ -1,55 +1,95 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head data-th-replace="~{/layouts/header :: head}">
-
+    <meta charset="UTF-8">
+    <title data-th-text="${titulo}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:rel="stylesheet" type="text/css" data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link th:rel="stylesheet" data-th-href="@{/css/estilos.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div data-th-replace="~{/layouts/header :: header}"></div>
+    <div data-th-replace="~{/layouts/header :: header}"></div>
 
-
-	
-	 <div class=" mt-5 container d-flex justify-content-center align-items-center">
-		<div class="text-center">
-		   <a  data-th-href="@{/alumno/nuevo}" class="btn btn-success">Nuevo Alumno</a>
-		</div>
+    <!-- Botón "Nuevo Alumno" alineado a la derecha -->
+    <div class="mt-5 container d-flex justify-content-end align-items-center">
+        <a data-th-href="@{/alumno/nuevo}" class="btn btn-success">
+            <i class="fas fa-user-plus"></i> Crear Usuario
+        </a>
     </div>
-	
-	 <div class="container mt-5">
+
+    <div class="container mt-3">
         <div class="row">
-        	
-        
             <div class="card m-3 d-inline-block col-lg-5" data-th-each="alum: ${alumnos}">
                 <div class="row g-0">
                     <div class="col-md-4 d-flex justify-content-center align-items-center">
-                        <img th:src="@{/images/estudiante.png}" class="img-fluid rounded-start" alt="...">
+                        <i class="fas fa-user-graduate fa-5x d-none d-sm-block d-md-none"></i>
+                        <i class="fas fa-user-graduate fa-3x d-none d-md-block"></i>
                     </div>
-                   
                     <div class="col-md-8 d-flex flex-column justify-content-center">
                         <div class="card-body">
-                        	
-                           <h5 class="card-title"><span data-th-text="${alum.nombre}+' '"></span><span data-th-text="${alum.apellido}"></span></h5>
-                           
-                            <p class="card-text">LU: <span data-th-text="${alum.lu}"></span></p>
-                            <p class="card-text">DNI: <span data-th-text="${alum.dni}"></span></p>
-                            <p class="card-text">Nacimiento: <span data-th-text="${#temporals.format(alum.fechaNacimiento,'dd/MM/yyyy')}"></span></p>
-                            <p class="card-text">Correo: <span data-th-text="${alum.email}"></span></p>
-                            <p class="card-text">Telefono: +54 <span data-th-text="${alum.telefono}"></span></p>
-                            <p class="card-text">Domicilio: <span data-th-text="${alum.domicilio}"></span></p>
-                            
-                          
-                            <a class="btn btn-warning" data-th-href="@{/alumno/modificar/}+${alum.dni}"><small class="text-muted">Editar</small></a>
-                            <a class="btn btn-danger" data-th-href="@{/alumno/eliminar/}+${alum.dni}"><small class="text-muted">Eliminar</small></a>
+                            <h5 class="card-title">
+                                <span data-th-text="${alum.nombre} + ' '"></span>
+                                <span data-th-text="${alum.apellido}"></span>
+                            </h5>
+                            <hr> <!-- Línea separadora -->
+                            <p class="card-text">
+                                <i class="fas fa-id-card"></i> LU: <span data-th-text="${alum.lu}"></span>
+                            </p>
+                            <hr> <!-- Línea separadora -->
+                            <p class="card-text">
+                                <i class="fas fa-id-card"></i> DNI: <span data-th-text="${alum.dni}"></span>
+                            </p>
+                            <hr> <!-- Línea separadora -->
+                            <p class="card-text">
+                                <i class="fas fa-envelope"></i> Correo: <span data-th-text="${alum.email}"></span>
+                            </p>
+                            <hr> <!-- Línea separadora -->
+                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${alum.id}" aria-expanded="false" aria-controls="collapse${alum.id}">
+                                Mostrar más
+                            </button>
+                            <div class="collapse mt-3" id="collapse${alum.id}">
+                                <hr> <!-- Línea separadora -->
+                                <p class="card-text">
+                                    <i class="fas fa-calendar-alt"></i> Nacimiento: <span data-th-text="${alum.fechaNacimiento}"></span>
+                                </p>
+                                <hr> <!-- Línea separadora -->
+                                <p class="card-text">
+                                    <i class="fas fa-phone"></i> Teléfono: +54 <span data-th-text="${alum.telefono}"></span>
+                                </p>
+                                <hr> <!-- Línea separadora -->
+                                <p class="card-text">
+                                    <i class="fas fa-envelope"></i> Carrera: <span data-th-text="${alum.carrera.nombre}"></span>
+                                </p>
+                                <hr> <!-- Línea separadora -->
+                                <p class="card-text">
+                                    <i class="fas fa-home"></i> Domicilio: <span data-th-text="${alum.domicilio}"></span>
+                                </p>
+                                <hr> <!-- Línea separadora -->
+                                <div class="btn-group mt-2" role="group" aria-label="Botones de acción">
+                                    <a class="btn btn-warning" data-th-href="@{/alumno/modificar/} + ${alum.id}">
+                                        <i class="fas fa-user-edit"></i> Editar
+                                    </a>
+                                    <a class="btn btn-danger" data-th-href="@{/alumno/eliminar/} + ${alum.id}">
+                                        <i class="fas fa-user-times"></i> Eliminar
+                                    </a>
+                                    <a class="btn btn-success" data-th-href="@{/alumno/} + ${alum.id} + @{/materias}">
+                                        <i class="fas fa-book"></i> Materias
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <footer data-th-replace="~{/layouts/footer :: footer}"></footer>
 
-
-<footer data-th-replace="~{/layouts/footer :: footer}"></footer>
-
-<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>

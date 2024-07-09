@@ -3,6 +3,7 @@ package ar.edu.unju.fi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,23 +11,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.collections.CollectionCarrera;
-import ar.edu.unju.fi.model.Carrera;
-
-
-
+import ar.edu.unju.fi.dto.CarreraDTO;
+import ar.edu.unju.fi.dto.MateriaDTO;
+import ar.edu.unju.fi.service.AlumnoService;
+import ar.edu.unju.fi.service.ICarreraService;
+import ar.edu.unju.fi.service.IMateriaService;
+import ar.edu.unju.fi.service.impl.AlumnoImplementacionService;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/carrera")
 public class CarreraController {
 	
 	@Autowired
-	private Carrera carrera;
+	private CarreraDTO carreraDTO;
+	
+	@Autowired
+	private ICarreraService carreraService;
+	
+	@Autowired
+	private AlumnoImplementacionService alumnoService;
+	
+	@Autowired
+	private IMateriaService materiaService;
 	
 	@GetMapping("/listado")
 	public String getCarrerasList(Model model) {
 		
-		model.addAttribute("carreras",CollectionCarrera.getCarreras());
+		model.addAttribute("carreras", carreraService.findAll());
 		model.addAttribute("titulo","Carreras");
 		
 		return "carreras";
@@ -36,32 +48,35 @@ public class CarreraController {
 	public String getNuevaCarreraPage(Model model) {
 		
 		boolean editar = false;
-		model.addAttribute("carrera",carrera);
-		model.addAttribute("editar",editar);
+		model.addAttribute("carrera", carreraDTO);
+		model.addAttribute("editar", editar);
 		model.addAttribute("titulo","Nueva carrera");
 	
 		return "formulariocarrera";
 	}
 	
 	@PostMapping("/guardar")
-	public ModelAndView guardarCarrera(@ModelAttribute("carrera") Carrera carrera) {
-		
-		ModelAndView modelView = new ModelAndView("carreras");
-		carrera.setEstado(true);
-		CollectionCarrera.agregarCarrera(carrera);
-		modelView.addObject("carreras",CollectionCarrera.getCarreras());
-		
+	public ModelAndView guardarCarrera(@Valid @ModelAttribute("carrera") CarreraDTO carreraDTO, BindingResult result) {
+		ModelAndView modelView;
+		if(result.hasErrors()) {
+			modelView = new ModelAndView("formulariocarrera");
+		}else {
+			modelView = new ModelAndView("carreras");
+			carreraDTO.setEstado("true");
+			carreraService.save(carreraDTO);
+			modelView.addObject("carreras", carreraService.findAll());
+			
+		}
 		return modelView;
 	}
 	
-	@GetMapping("/modificar/{codigo}")
-	public String getEditarCarrera(Model model,@PathVariable(value="codigo")int codigo) {
+	@GetMapping("/modificar/{id}")
+	public String getEditarCarrera(Model model,@PathVariable(value="id")Long id) {
 		
 		boolean editar = true;
-		Carrera carreraEncontrada = new Carrera();
-		carreraEncontrada = CollectionCarrera.buscarCarrera(codigo);
+		CarreraDTO carreraEncontradaDTO = carreraService.findById(id);
 		model.addAttribute("editar", editar);
-		model.addAttribute("carrera", carreraEncontrada);
+		model.addAttribute("carrera", carreraEncontradaDTO);
 		model.addAttribute("titulo", "Modificar Carrera");		
 		
 		return "formulariocarrera";
@@ -69,20 +84,50 @@ public class CarreraController {
 	
 	
 	@PostMapping("/modificar")
-	public String modificarCarrera(@ModelAttribute("carrera") Carrera carrera) {
+	public String modificarCarrera(@Valid @ModelAttribute("carrera") CarreraDTO carreraDTO, BindingResult result, Model model) {
+		boolean editar = true;
+		if(result.hasErrors()) {
+			model.addAttribute("editar", editar);
+			model.addAttribute("titulo", "Modificar Carrera");	
+			return "formulariocarrera";
+		}else {
+			carreraService.edit(carreraDTO);
+			return "redirect:/carrera/listado";
+		}
 		
-		CollectionCarrera.modificarCarrera(carrera);
 		
-		return "redirect:/carrera/listado";
 	}
 	
-	@GetMapping("/eliminar/{codigo}")
-	public String eliminarCarrera(@PathVariable(value="codigo") int codigo) {
+	@GetMapping("/eliminar/{id}")
+	public String eliminarCarrera(@PathVariable(value="id") Long id) {
 		
-		CollectionCarrera.eliminarCarrera(codigo);
+		
+		CarreraDTO carreraEncontradaDTO = carreraService.findById(id);
+		carreraService.deleteById(carreraEncontradaDTO);
 		
 		return "redirect:/carrera/listado";
 		
+	}
+	
+	@GetMapping("/pde/{id}")
+	public String getMateriasPage(@PathVariable(value="id") Long id, Model model) {
+		
+		model.addAttribute("materias", materiaService.filtrarMaterias(id));
+		model.addAttribute("titulo", "Plan de estudios");
+		model.addAttribute("carrera", carreraService.findById(id));
+		
+		return "materiascarrera";
+	}
+	
+	@GetMapping("/lda/{id}")
+	public String getAlumnosPage(@PathVariable(value="id") Long id, Model model) {
+		
+		model.addAttribute("alumnos", alumnoService.filtrarAlumnos(id));
+		model.addAttribute("titulo", "Listado de alumnos");
+		model.addAttribute("carrera", carreraService.findById(id));
+		
+		return "alumnoscarrera";
 	}
 
 }
+

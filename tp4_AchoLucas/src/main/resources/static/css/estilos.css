@@ -1,71 +1,1231 @@
 @charset "UTF-8";
 
- body {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-         .custom-navbar {
-            background-color:#323A45; 
-            padding: 0;
-             
-        }
-        .custom-navbar .nav-link {
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+/* modificar carrera */
+
+/* COMENTE TODO ESTO POR QUE NO LO PUDE SOLOCIONAR CON ESTE CSS/*
+
+-------------------------------------------------------------------------------------------
+
+/* Navbar */
+/*.custom-navbar {
+    background-color: #323A45;
+    padding: 0;
+}
+
+.custom-navbar .nav-link {
+    color: white;
+    padding: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.custom-navbar .nav-link:hover {
+    color: white;
+    background-color: #2082A5;
+}
+/*
+/* Sidebar 
+.sidebar {
+    background-color: #2082A5;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    overflow-y: auto;
+}
+*/
+/*
+.sidebar h5 {
+    margin-top: 60px; /* To account for the header height */
+/*}
+/*
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar a:hover {
+    background-color: #186b8c;
+    text-decoration: none;
+}
+
+/* Wrapper for content */
+/*
+.wrapper {
+    margin-left: 270px; /* Give space for the fixed sidebar */
+  /*  display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 60px; /* To account for the header height */
+/*}
+/**
+/* Main content area */
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Headings */
+.main-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2082A5;
+    margin-bottom: 20px;
+}
+
+.sub-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #323A45;
+    margin-bottom: 15px;
+}
+
+/* Tables */
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table thead th {
+    background-color: #2082A5;
+    color: white;
+}
+
+.table-bordered {
+    border: 2px solid #2082A5;
+    border-radius: 5px;
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #2082A5;
+}
+
+.table th, .table td {
+    padding: 10px;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #2082A5;
+    border-color: #2082A5;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #186b8c;
+    border-color: #186b8c;
+}
+
+/* Form Styles */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+form select, form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+form button {
+    background-color: #2082A5;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #186b8c;
+}
+
+/* Footer */
+.footer {
+    background-color: #323A45;
+    color: white;
+    padding: 40px 0;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer .column-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footer .links a {
+    display: block;
+    margin-bottom: 8px;
+}
+
+/*
+Desde aca empece con la exp de usuario
+*/
+
+
+
+/* aca trabaje el header*/
+
+
+
+
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+#custom-navbar {
+  width: 100%;
+  background-color: #323A45; /* Color de fondo del nav */
+}
+
+#custom-navbar .navbar-nav {
+  display: flex;
+  gap: 13px; /* Añade espacio entre los elementos */
+  padding: -2px 0px; /* Ajusta el padding para espaciar mejor los elementos */
+  justify-content: center; /* Centra los elementos de la navegación horizontalmente */
+}
+
+#custom-navbar .nav-item {
+  list-style: none;
+}
+
+#custom-navbar .nav-link {
+  position: relative;
+  display: block;
+  text-transform: uppercase;
+  margin: 1px 0;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white; /* Cambia el color del texto a blanco */
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  transition: .5s;
+  z-index: 1;
+  border: 2px solid transparent;
+  border-radius: 5px;
+}
+
+#custom-navbar .nav-link:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top: 2px solid #2082A5;
+  border-bottom: 2px solid #2082A5;
+  transform: scaleY(2);
+  opacity: 0;
+  transition: .3s;
+}
+
+#custom-navbar .nav-link:after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2082A5;
+  transform: scale(0);
+  opacity: 0;
+  transition: .3s;
+  z-index: -1;
+}
+
+#custom-navbar .nav-link:hover {
+  color: #fff;
+  border: 2px solid #2082A5;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+#custom-navbar .nav-link:hover:before {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+#custom-navbar .nav-link:hover:after {
+  transform: scaleY(1);
+  opacity: 1;
+}
+/*alumo vista*/
+.btn-group .btn {
+    margin-right: 5px; /* Espacio entre los botones */
+    padding: 8px 12px; /* Padding para hacer los botones más pequeños */
+    font-size: 0.9rem; /* Tamaño de fuente igualado para todos los botones */
+    min-width: auto; /* Ajuste del ancho mínimo si es necesario */
+}
+/* Ajuste del margen superior para los botones en el modo colapsado */
+.collapse .btn {
+    margin-top: 5px; /* Ajusta el espacio superior de los botones dentro del colapso */
+}
+  .btn-warning {
+  
+            background-color: #ffc107; /* Amarillo */
+            border-color: #ffc107;
             color: white;
-             padding: 1rem;
-            transition: background-color 0.3s, color 0.3s;
         }
-        .custom-navbar .nav-link:hover {
+
+        .btn-danger {
+            background-color: #dc3545; /* Rojo */
+            border-color: #dc3545;
             color: white;
-            background-color: #2082A5;
         }
-   
-          .wrapper {
-            flex: 1;
-            display: flex;
+
+        .btn-warning:hover {
+            background-color: #e0a800; /* Amarillo oscuro */
+            border-color: #e0a800;
         }
-        .sidebar {
-            background-color: #2082A5;
-            color: white;
-            padding: 20px;
+
+        .btn-danger:hover {
+            background-color: #c82333; /* Rojo oscuro */
+            border-color: #bd2130;
         }
-        .sidebar a {
-            color: white;
-            text-decoration: none;
+
+        .btn i {
+            margin-right: 5px; /* Espacio entre el icono y el texto */
+        }
+
+        /* Alineación del botón de crear usuario a la derecha */
+        .mt-5.container {
+            margin-top: 2rem; /* Ajusta el margen superior si es necesario */
+        }
+
+        /* Espacio superior para las tarjetas */
+        .card {
+            margin-top: 1rem; /* Espacio arriba de la tarjeta */
+        }
+
+@media (max-width: 575.98px) { /* Tamaño muy pequeño (xs) */
+    .fa-user-graduate {
+        display: none;
+    }
+}
+/*
+AQUI EL INDEX MEJORADO
+*/
+
+
+
+#index {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+}
+
+#index .wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+#index .sidebar {
+  background-color: #f0f4f8; /* Fondo más claro */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#index .sidebar h5 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333; /* Color del texto del encabezado */
+}
+
+#index .sidebar a {
+  display: block;
+  padding: 10px;
+  margin-bottom: 5px;
+  color: #007bff; /* Color del texto del enlace */
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  background-color: #e9f3fc; /* Fondo del enlace */
+}
+
+#index .sidebar a:hover {
+  background-color: #007bff; /* Color de fondo al pasar el ratón */
+  color: #ffffff; /* Color del texto al pasar el ratón */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra al pasar el ratón */
+}
+
+#index .content {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-left: 20px; /* Añade margen para evitar que choquen */
+}
+
+#index .content h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+#index .news-item {
+  margin-bottom: 20px;
+}
+
+#index .news-item h5 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #0056b3;
+}
+
+#index .news-item p {
+  margin-bottom: 10px;
+  color: #343a40;
+}
+
+@media (max-width: 768px) {
+  #index .sidebar {
+    margin-bottom: 20px;
+  }
+  #index .content {
+    margin-left: 0; /* Elimina el margen en pantallas pequeñas */
+  }
+}
+
+
+/* estudiante mejorado*/
+
+
+
+
+
+
+
+#estudianteImagen {
+    box-shadow: 1px 1px 20px black;
+    
+}
+
+
+#facu {
+	    box-shadow: 1px 1px 20px black;
+}
+
+/* DOCENTES MEJORADO*/
+
+
+/* Estilo para alinear el botón "Nuevo Docente" a la derecha */
+.mt-5.container.d-flex.justify-content-end.align-items-center {
+    margin-top: 3rem; /* Ajusta el espacio superior del contenedor */
+}
+
+/* Estilo para centrar la imagen del docente y ajustar el tamaño */
+#docenteImagen {
+    width: 90%; /* Ajusta el ancho de la imagen según sea necesario */
+    max-width: 150px; /* Ajusta el tamaño máximo de la imagen */
+    margin: 0 auto; /* Centra la imagen en el contenedor */
+}
+
+/* Estilo para el texto en los párrafos de las tarjetas */
+.card-text {
+    color: black; /* Cambia el color del texto a blanco */
+}
+
+/* Estilo para los íconos en los párrafos */
+.card-text i {
+    margin-right: 5px; /* Espacio entre el ícono y el texto */
+}
+
+/* Estilo para los botones "Editar" y "Eliminar" */
+.btn-warning, .btn-danger {
+    color: white; /* Color del texto del botón */
+}
+
+/* Estilo para los botones "Editar" */
+.btn-warning {
+    background-color: #ffc107; /* Color de fondo del botón de advertencia */
+    border-color: #ffc107; /* Color del borde del botón de advertencia */
+}
+
+/* Estilo para los botones "Eliminar" */
+.btn-danger {
+    background-color: #dc3545; /* Color de fondo del botón de eliminar */
+    border-color: #dc3545; /* Color del borde del botón de eliminar */
+}
+
+/* Efecto hover para los botones */
+.btn-warning:hover, .btn-danger:hover {
+    opacity: 0.9; /* Efecto hover para los botones */
+}
+
+/* Espacio entre el icono y el texto en los botones */
+.btn i {
+    margin-right: 5px;
+}
+
+/* Aumentar el espacio superior entre las tarjetas */
+.container.mt-4 {
+    margin-top: 2rem; /* Ajusta el margen superior del contenedor */
+}
+
+
+/* Aqui Las materias mejoradas */
+
+
+/* Estilo para alinear el botón "Nueva Materia" a la derecha */
+.mt-5.container.d-flex.justify-content-end.align-items-center {
+    margin-top: 3rem; /* Ajusta el espacio superior del contenedor */
+}
+
+/* Estilo para centrar la imagen de materia y ajustar el tamaño */
+#materiaImagen {
+    width: 90%; /* Ajusta el ancho de la imagen según sea necesario */
+    max-width: 150px; /* Ajusta el tamaño máximo de la imagen */
+    margin: 0 auto; /* Centra la imagen en el contenedor */
+    
+    
+}
+
+/* Estilo para el texto en los párrafos de las tarjetas */
+.card-text {
+    color: black; /* Cambia el color del texto a blanco */
+}
+
+/* Estilo para los íconos en los párrafos */
+.card-text i {
+    margin-right: 5px; /* Espacio entre el ícono y el texto */
+}
+
+/* Estilo para los botones "Editar" y "Eliminar" */
+.btn-warning, .btn-danger {
+    color: white; /* Color del texto del botón */
+}
+
+/* Estilo para los botones "Editar" */
+.btn-warning {
+    background-color: #ffc107; /* Color de fondo del botón de advertencia */
+    border-color: #ffc107; /* Color del borde del botón de advertencia */
+}
+
+/* Estilo para los botones "Eliminar" */
+.btn-danger {
+    background-color: #dc3545; /* Color de fondo del botón de eliminar */
+    border-color: #dc3545; /* Color del borde del botón de eliminar */
+}
+
+/* Efecto hover para los botones */
+.btn-warning:hover, .btn-danger:hover {
+    opacity: 0.9; /* Efecto hover para los botones */
+}
+
+/* Espacio entre el icono y el texto en los botones */
+.btn i {
+    margin-right: 5px;
+}
+
+/* Aumentar el espacio superior entre las tarjetas */
+.container.mt-4 {
+    margin-top: 2rem; /* Ajusta el margen superior del contenedor */
+}
+/* aqui docentes mejorados */
+
+
+
+        /* Estilos adicionales */
+        #content-wrapper {
+            margin-top: 2rem;
+        }
+
+        #uniImagen {
             display: block;
-            margin-bottom: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%; /* Agrandar un poco la imagen */
         }
-        .sidebar a:hover {
-            text-decoration: underline;
+
+        p {
+            color: white; /* Color blanco para todos los <p> */
         }
-        .content {
-            flex: 1;
-            padding: 20px;
+
+        .btn i {
+            margin-right: 5px; /* Espacio entre el icono y el texto */
         }
-        .news-item {
-            margin-bottom: 20px;
+
+        .btn-warning, .btn-danger {
+            color: white !important;
         }
-        .footer {
-            background-color: #323A45;
-            color: white;
-            padding: 40px 0;
+
+        .container.mt-5 {
+            margin-top: 2rem !important;
         }
-        .footer a {
-            color: white;
-            text-decoration: none;
+
+        .container.d-flex {
+            justify-content: end;
         }
-        .footer a:hover {
-            text-decoration: underline;
+    /* aqui el menu principal /*
+
+body {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: #444;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+#menuprincipal {
+  background: #333;
+  padding: 1rem 2rem;
+}
+
+#menuprincipal .navbar-nav .nav-link {
+  color: #fff;
+  margin: 0 1rem;
+}
+
+#menuprincipal .navbar-nav .nav-link:hover {
+  color: #f0f0f0;
+}
+
+.container {
+  width: 1000px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+
+.container .card {
+  position: relative;
+  
+      box-shadow: 1px 1px 20px black;
+}
+
+.container .card .face {
+  width: 300px;
+  height: 200px;
+  transition: .4s;
+}
+
+.container .card .face.face1 {
+  position: relative;
+  background: #333;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  z-index: 1;
+  transform: translateY(100px);
+}
+
+.container .card:hover .face.face1 {
+  transform: translateY(0);
+  box-shadow:
+    inset 0 0 60px whitesmoke,
+    inset 20px 0 80px #f0f,
+    inset -20px 0 80px #0ff,
+    inset 20px 0 300px #f0f,
+    inset -20px 0 300px #0ff,
+    0 0 50px #fff,
+    -10px 0 80px #f0f,
+    10px 0 80px #0ff;
+}
+
+.container .card .face.face1 .content {
+  opacity: .2;
+  transition: 0.5s;
+  text-align: center;
+}
+
+.container .card:hover .face.face1 .content {
+  opacity: 1;
+}
+
+.container .card .face.face1 .content i {
+  font-size: 3em;
+  color: white;
+  display: inline-block;
+}
+
+.container .card .face.face1 .content h3 {
+  font-size: 1em;
+  color: white;
+  text-align: center;
+}
+
+.container .card .face.face1 .content a {
+  transition: .5s;
+}
+
+.container .card .face.face2 {
+  position: relative;
+  background: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .8);
+  transform: translateY(-100px);
+}
+
+.container .card:hover .face.face2 {
+  transform: translateY(0);
+}
+
+.container .card .face.face2 .content p, a {
+  font-size: 10pt;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.container .card .face.face2 .content a {
+  text-decoration: none;
+  color: black;
+  box-sizing: border-box;
+  outline: 1px dashed #333;
+  padding: 10px;
+  margin: 15px 0 0;
+  display: inline-block;
+}
+
+.container .card .face.face2 .content a:hover {
+  background: #333;
+  color: whitesmoke;
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* consultar mejorado */
+
+
+/* Título principal */
+.main-title {
+    color: #007bff; /* Color azul para el título */
+    font-size: 2rem; /* Tamaño de fuente del título */
+    font-weight: bold; /* Negrita para el título */
+}
+
+/* Subtítulo de la sección */
+.sub-title {
+    color: #343a40; /* Color gris oscuro para el subtítulo */
+    font-size: 1.5rem; /* Tamaño de fuente del subtítulo */
+    font-weight: bold; /* Negrita para el subtítulo */
+}
+
+/* Espaciado superior para el contenedor de filtro */
+.container.mt-5 {
+    margin-top: 3rem; /* Ajusta el espacio superior del contenedor */
+}
+
+/* Estilo para el botón de filtro */
+.btn-primary {
+    background-color: #007bff; /* Color de fondo del botón de filtro */
+    border-color: #007bff; /* Color del borde del botón de filtro */
+    color: white; /* Color del texto del botón */
+}
+
+/* Efecto hover para el botón de filtro */
+.btn-primary:hover {
+    opacity: 0.9; /* Efecto hover para el botón */
+}
+
+/* Icono en el botón de filtro */
+.btn-primary i {
+    margin-right: 5px; /* Espacio entre el ícono y el texto */
+}
+
+/* Estilo para los párrafos dentro del contenedor */
+.container p {
+    color: #6c757d; /* Color gris para el texto de los párrafos */
+}
+
+/* Estilo para la tabla */
+.table {
+    background-color: #f8f9fa; /* Fondo claro para la tabla */
+}
+
+/* Color del encabezado de la tabla */
+.table thead.thead-dark {
+    background-color: #343a40; /* Color de fondo del encabezado */
+    color: white; /* Color del texto del encabezado */
+}
+
+/* Estilo para los íconos */
+.fa-solid {
+    color: #007bff; /* Color azul para los íconos */
+}
+
+
+/*FILTRAR MEJORADO */
+/* Título principal */
+.main-title {
+    color: #007bff; /* Color azul para el título */
+    font-size: 2rem; /* Tamaño de fuente del título */
+    font-weight: bold; /* Negrita para el título */
+}
+
+/* Subtítulo de la sección */
+.sub-title {
+    color: #343a40; /* Color gris oscuro para el subtítulo */
+    font-size: 1.5rem; /* Tamaño de fuente del subtítulo */
+    font-weight: bold; /* Negrita para el subtítulo */
+}
+
+/* Estilo del botón de filtro */
+.btn-primary {
+    background-color: #007bff; /* Color de fondo del botón */
+    border-color: #007bff; /* Color del borde del botón */
+    color: white; /* Color del texto del botón */
+    font-weight: bold; /* Negrita para el texto del botón */
+    border-radius: 0.25rem; /* Bordes redondeados */
+}
+
+
+.btn-primary:hover {
+    opacity: 0.9; /* Efecto hover para el botón */
+}
+
+/* Estilo específico para el botón de filtro con ícono */
+.btn-filter i {
+    color: white; /* Color blanco para el ícono dentro del botón */
+    margin-right: 5px; /* Espacio entre el ícono y el texto */
+}
+
+/* Icono en el botón de filtro */
+.btn-primary i {
+    color: white; /* Color blanco para el ícono en el botón */
+}
+
+/* Estilo para los párrafos dentro del contenedor */
+.container p {
+    color: #6c757d; /* Color gris para el texto de los párrafos */
+}
+
+/* Estilo para la tabla */
+.table {
+    background-color: #f8f9fa; /* Fondo claro para la tabla */
+}
+
+/* Color del encabezado de la tabla */
+.table thead.thead-dark {
+    background-color: #343a40; /* Color de fondo del encabezado */
+    color: white; /* Color del texto del encabezado */
+}
+
+/* Estilo para los íconos */
+.fa-solid {
+    color: #007bff; /* Color azul para los íconos */
+}
+
+@media (max-width: 575.98px) { /* Tamaño pequeño (sm) y menor */
+    #iconCarrera {
+        font-size: 2rem; /* Tamaño reducido para pantallas pequeñas */
+    }
+}
+
+#btn-editar,
+.btn-danger,
+.btn-primary {
+    margin-top: 8px; /* Ajusta el margen superior según sea necesario */
+}
+.btn {
+    padding: 8px 12px; /* Ajusta el padding según sea necesario */
+    font-size: 14px; /* Ajusta el tamaño de fuente según sea necesario */
+}
+
+.btn-warning, .btn-danger, .btn-primary {
+    font-size: 14px; /* Ajusta el tamaño de fuente si es necesario */
+}
+
+.btn i {
+    margin-right: 5px; /* Ajusta el espacio entre el icono y el texto */
+}
+
+/* Materiascarrera */
+
+        /* Estilos personalizados */
+        body {
+            background-color: #f8f9fa; /* Color de fondo del cuerpo */
+            font-family: Arial, sans-serif;
+            color: #333;
         }
-        .footer .column-title {
+        #materias-carrera .titulo-principal {
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
-            margin-bottom: 15px;
+            color: #007bff; /* Azul brillante */
         }
-        .footer .links a {
-            display: block;
-            margin-bottom: 8px;
+        #materias-carrera .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: #fff; /* Fondo blanco para las tarjetas */
         }
-        
-        
-        
+        #materias-carrera .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        #materias-carrera .card-header {
+            background-color: #007bff; /* Fondo azul */
+            color: #fff; /* Texto blanco */
+            font-weight: bold;
+            border-radius: 10px 10px 0 0;
+            padding: 1rem;
+            margin-bottom: 0;
+        }
+        #materias-carrera .card-body {
+            padding: 1.5rem;
+        }
+        #materias-carrera .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #007bff; /* Texto azul */
+        }
+        #materias-carrera .card-text {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #555; /* Texto gris oscuro */
+        }
+        #materias-carrera .linea-separadora {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-top: 1px solid #007bff; /* Línea superior azul */
+        }
+        #materias-carrera .icono {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            color: #007bff; /* Iconos azules */
+        }
+        /* Efecto de desvanecimiento */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        #materias-carrera .fade-in {
+            animation: fade-in 0.5s ease-out;
+        }
+        /* Botones animados */
+        .btn {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+/* Materiasalumno*/
+
+
+        /* Estilos personalizados */
+        body {
+            background-color: #f8f9fa; /* Color de fondo del cuerpo */
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        #materias-alumno .titulo-principal {
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #007bff; /* Azul brillante */
+        }
+        #materias-alumno .nueva-inscripcion-btn, #materias-alumno .btn-info {
+            display: inline-block;
+            margin-top: 1rem; /* Reducido para ajustar */
+            margin-bottom: 1rem; /* Reducido para ajustar */
+            border-radius: 20px;
+            font-weight: bold;
+            background-color: #28a745; /* Verde */
+            border-color: #28a745; /* Borde verde */
+            color: #fff; /* Texto blanco */
+        }
+        #materias-alumno .btn-inscripcion:hover {
+            background-color: #218838; /* Verde más oscuro al pasar */
+            border-color: #218838;
+        }
+        #materias-alumno .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: #fff; /* Fondo blanco para las tarjetas */
+        }
+        #materias-alumno .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        #materias-alumno .card-header {
+            background-color: #007bff; /* Fondo azul */
+            color: #fff; /* Texto blanco */
+            font-weight: bold;
+            border-radius: 10px 10px 0 0;
+            padding: 1rem;
+            margin-bottom: 0;
+        }
+        #materias-alumno .card-body {
+            padding: 1.5rem;
+        }
+        #materias-alumno .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #007bff; /* Texto azul */
+        }
+        #materias-alumno .card-text {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #555; /* Texto gris oscuro */
+        }
+        #materias-alumno .linea-separadora {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-top: 1px solid #007bff; /* Línea superior azul */
+        }
+        #materias-alumno .icono {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            color: #007bff; /* Iconos azules */
+        }
+        /* Colores diferentes para cada tarjeta */
+        #materias-alumno .card:nth-child(odd) {
+            background-color: #f8f9fa; /* Fondo gris claro */
+        }
+        #materias-alumno .card:nth-child(even) {
+            background-color: #e9ecef; /* Fondo gris */
+        }
+        /* Efecto de desvanecimiento */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        #materias-alumno .fade-in {
+            animation: fade-in 0.5s ease-out;
+        }
+        /* Botones animados */
+        .btn {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+/* alumnos carrera*/
+
+
+        /* Estilos personalizados */
+        body {
+            background-color: #f8f9fa; /* Color de fondo del cuerpo */
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        #alumnos-carrera .titulo-principal {
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #007bff; /* Azul brillante */
+        }
+        #alumnos-carrera .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: #fff; /* Fondo blanco para las tarjetas */
+        }
+        #alumnos-carrera .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        #alumnos-carrera .card-header {
+            background-color: #007bff; /* Fondo azul */
+            color: #fff; /* Texto blanco */
+            font-weight: bold;
+            border-radius: 10px 10px 0 0;
+            padding: 1rem;
+            margin-bottom: 0;
+        }
+        #alumnos-carrera .card-body {
+            padding: 1.5rem;
+        }
+        #alumnos-carrera .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #007bff; /* Texto azul */
+        }
+        #alumnos-carrera .card-text {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #555; /* Texto gris oscuro */
+        }
+        #alumnos-carrera .linea-separadora {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-top: 1px solid #007bff; /* Línea superior azul */
+        }
+        #alumnos-carrera .icono {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            color: #007bff; /* Iconos azules */
+        }
+        /* Efecto de desvanecimiento */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        #alumnos-carrera .fade-in {
+            animation: fade-in 0.5s ease-out;
+        }
+        /* Botones animados */
+        .btn {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+    /*alumnosmateria */
+    
+    
+        /* Estilos personalizados */
+        body {
+            background-color: #f8f9fa; /* Color de fondo del cuerpo */
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        #alumnos-materia .titulo-principal {
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #007bff; /* Azul brillante */
+        }
+        #alumnos-materia .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: #fff; /* Fondo blanco para las tarjetas */
+        }
+        #alumnos-materia .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        #alumnos-materia .card-header {
+            background-color: #007bff; /* Fondo azul */
+            color: #fff; /* Texto blanco */
+            font-weight: bold;
+            border-radius: 10px 10px 0 0;
+            padding: 1rem;
+            margin-bottom: 0;
+        }
+        #alumnos-materia .card-body {
+            padding: 1.5rem;
+        }
+        #alumnos-materia .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #007bff; /* Texto azul */
+        }
+        #alumnos-materia .card-text {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #555; /* Texto gris oscuro */
+        }
+        #alumnos-materia .linea-separadora {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-top: 1px solid #007bff; /* Línea superior azul */
+        }
+        #alumnos-materia .icono {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            color: #007bff; /* Iconos azules */
+        }
+        /* Efecto de desvanecimiento */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        #alumnos-materia .fade-in {
+            animation: fade-in 0.5s ease-out;
+        }
+        /* Botones animados */
+        .btn {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+  
