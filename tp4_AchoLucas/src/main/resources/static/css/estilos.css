@@ -8,6 +8,8 @@ body {
     background-color: #f8f9fa;
     color: #333;
 }
+/* modificar carrera */
+
 /* COMENTE TODO ESTO POR QUE NO LO PUDE SOLOCIONAR CON ESTE CSS/*
 
 -------------------------------------------------------------------------------------------
@@ -229,8 +231,8 @@ body {
 
 #custom-navbar .navbar-nav {
   display: flex;
-  gap: 15px; /* Añade espacio entre los elementos */
-  padding: 2px 5px; /* Ajusta el padding para espaciar mejor los elementos */
+  gap: 13px; /* Añade espacio entre los elementos */
+  padding: -2px 0px; /* Ajusta el padding para espaciar mejor los elementos */
   justify-content: center; /* Centra los elementos de la navegación horizontalmente */
 }
 
@@ -242,7 +244,7 @@ body {
   position: relative;
   display: block;
   text-transform: uppercase;
-  margin: 5px 0;
+  margin: 1px 0;
   padding: 10px 20px;
   text-decoration: none;
   color: white; /* Cambia el color del texto a blanco */
@@ -300,8 +302,18 @@ body {
   opacity: 1;
 }
 /*alumo vista*/
-
+.btn-group .btn {
+    margin-right: 5px; /* Espacio entre los botones */
+    padding: 8px 12px; /* Padding para hacer los botones más pequeños */
+    font-size: 0.9rem; /* Tamaño de fuente igualado para todos los botones */
+    min-width: auto; /* Ajuste del ancho mínimo si es necesario */
+}
+/* Ajuste del margen superior para los botones en el modo colapsado */
+.collapse .btn {
+    margin-top: 5px; /* Ajusta el espacio superior de los botones dentro del colapso */
+}
   .btn-warning {
+  
             background-color: #ffc107; /* Amarillo */
             border-color: #ffc107;
             color: white;
@@ -336,6 +348,12 @@ body {
         .card {
             margin-top: 1rem; /* Espacio arriba de la tarjeta */
         }
+
+@media (max-width: 575.98px) { /* Tamaño muy pequeño (xs) */
+    .fa-user-graduate {
+        display: none;
+    }
+}
 /*
 AQUI EL INDEX MEJORADO
 */
@@ -511,6 +529,8 @@ AQUI EL INDEX MEJORADO
     width: 90%; /* Ajusta el ancho de la imagen según sea necesario */
     max-width: 150px; /* Ajusta el tamaño máximo de la imagen */
     margin: 0 auto; /* Centra la imagen en el contenedor */
+    
+    
 }
 
 /* Estilo para el texto en los párrafos de las tarjetas */
@@ -847,3 +867,365 @@ body {
 .fa-solid {
     color: #007bff; /* Color azul para los íconos */
 }
+
+@media (max-width: 575.98px) { /* Tamaño pequeño (sm) y menor */
+    #iconCarrera {
+        font-size: 2rem; /* Tamaño reducido para pantallas pequeñas */
+    }
+}
+
+#btn-editar,
+.btn-danger,
+.btn-primary {
+    margin-top: 8px; /* Ajusta el margen superior según sea necesario */
+}
+.btn {
+    padding: 8px 12px; /* Ajusta el padding según sea necesario */
+    font-size: 14px; /* Ajusta el tamaño de fuente según sea necesario */
+}
+
+.btn-warning, .btn-danger, .btn-primary {
+    font-size: 14px; /* Ajusta el tamaño de fuente si es necesario */
+}
+
+.btn i {
+    margin-right: 5px; /* Ajusta el espacio entre el icono y el texto */
+}
+
+/* Materiascarrera */
+
+        /* Estilos personalizados */
+        body {
+            background-color: #f8f9fa; /* Color de fondo del cuerpo */
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        #materias-carrera .titulo-principal {
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #007bff; /* Azul brillante */
+        }
+        #materias-carrera .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: #fff; /* Fondo blanco para las tarjetas */
+        }
+        #materias-carrera .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        #materias-carrera .card-header {
+            background-color: #007bff; /* Fondo azul */
+            color: #fff; /* Texto blanco */
+            font-weight: bold;
+            border-radius: 10px 10px 0 0;
+            padding: 1rem;
+            margin-bottom: 0;
+        }
+        #materias-carrera .card-body {
+            padding: 1.5rem;
+        }
+        #materias-carrera .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #007bff; /* Texto azul */
+        }
+        #materias-carrera .card-text {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #555; /* Texto gris oscuro */
+        }
+        #materias-carrera .linea-separadora {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-top: 1px solid #007bff; /* Línea superior azul */
+        }
+        #materias-carrera .icono {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            color: #007bff; /* Iconos azules */
+        }
+        /* Efecto de desvanecimiento */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        #materias-carrera .fade-in {
+            animation: fade-in 0.5s ease-out;
+        }
+        /* Botones animados */
+        .btn {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+/* Materiasalumno*/
+
+
+        /* Estilos personalizados */
+        body {
+            background-color: #f8f9fa; /* Color de fondo del cuerpo */
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        #materias-alumno .titulo-principal {
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #007bff; /* Azul brillante */
+        }
+        #materias-alumno .nueva-inscripcion-btn, #materias-alumno .btn-info {
+            display: inline-block;
+            margin-top: 1rem; /* Reducido para ajustar */
+            margin-bottom: 1rem; /* Reducido para ajustar */
+            border-radius: 20px;
+            font-weight: bold;
+            background-color: #28a745; /* Verde */
+            border-color: #28a745; /* Borde verde */
+            color: #fff; /* Texto blanco */
+        }
+        #materias-alumno .btn-inscripcion:hover {
+            background-color: #218838; /* Verde más oscuro al pasar */
+            border-color: #218838;
+        }
+        #materias-alumno .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: #fff; /* Fondo blanco para las tarjetas */
+        }
+        #materias-alumno .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        #materias-alumno .card-header {
+            background-color: #007bff; /* Fondo azul */
+            color: #fff; /* Texto blanco */
+            font-weight: bold;
+            border-radius: 10px 10px 0 0;
+            padding: 1rem;
+            margin-bottom: 0;
+        }
+        #materias-alumno .card-body {
+            padding: 1.5rem;
+        }
+        #materias-alumno .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #007bff; /* Texto azul */
+        }
+        #materias-alumno .card-text {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #555; /* Texto gris oscuro */
+        }
+        #materias-alumno .linea-separadora {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-top: 1px solid #007bff; /* Línea superior azul */
+        }
+        #materias-alumno .icono {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            color: #007bff; /* Iconos azules */
+        }
+        /* Colores diferentes para cada tarjeta */
+        #materias-alumno .card:nth-child(odd) {
+            background-color: #f8f9fa; /* Fondo gris claro */
+        }
+        #materias-alumno .card:nth-child(even) {
+            background-color: #e9ecef; /* Fondo gris */
+        }
+        /* Efecto de desvanecimiento */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        #materias-alumno .fade-in {
+            animation: fade-in 0.5s ease-out;
+        }
+        /* Botones animados */
+        .btn {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+/* alumnos carrera*/
+
+
+        /* Estilos personalizados */
+        body {
+            background-color: #f8f9fa; /* Color de fondo del cuerpo */
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        #alumnos-carrera .titulo-principal {
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #007bff; /* Azul brillante */
+        }
+        #alumnos-carrera .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: #fff; /* Fondo blanco para las tarjetas */
+        }
+        #alumnos-carrera .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        #alumnos-carrera .card-header {
+            background-color: #007bff; /* Fondo azul */
+            color: #fff; /* Texto blanco */
+            font-weight: bold;
+            border-radius: 10px 10px 0 0;
+            padding: 1rem;
+            margin-bottom: 0;
+        }
+        #alumnos-carrera .card-body {
+            padding: 1.5rem;
+        }
+        #alumnos-carrera .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #007bff; /* Texto azul */
+        }
+        #alumnos-carrera .card-text {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #555; /* Texto gris oscuro */
+        }
+        #alumnos-carrera .linea-separadora {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-top: 1px solid #007bff; /* Línea superior azul */
+        }
+        #alumnos-carrera .icono {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            color: #007bff; /* Iconos azules */
+        }
+        /* Efecto de desvanecimiento */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        #alumnos-carrera .fade-in {
+            animation: fade-in 0.5s ease-out;
+        }
+        /* Botones animados */
+        .btn {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+    /*alumnosmateria */
+    
+    
+        /* Estilos personalizados */
+        body {
+            background-color: #f8f9fa; /* Color de fondo del cuerpo */
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        #alumnos-materia .titulo-principal {
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #007bff; /* Azul brillante */
+        }
+        #alumnos-materia .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: #fff; /* Fondo blanco para las tarjetas */
+        }
+        #alumnos-materia .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        #alumnos-materia .card-header {
+            background-color: #007bff; /* Fondo azul */
+            color: #fff; /* Texto blanco */
+            font-weight: bold;
+            border-radius: 10px 10px 0 0;
+            padding: 1rem;
+            margin-bottom: 0;
+        }
+        #alumnos-materia .card-body {
+            padding: 1.5rem;
+        }
+        #alumnos-materia .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #007bff; /* Texto azul */
+        }
+        #alumnos-materia .card-text {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #555; /* Texto gris oscuro */
+        }
+        #alumnos-materia .linea-separadora {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-top: 1px solid #007bff; /* Línea superior azul */
+        }
+        #alumnos-materia .icono {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            color: #007bff; /* Iconos azules */
+        }
+        /* Efecto de desvanecimiento */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        #alumnos-materia .fade-in {
+            animation: fade-in 0.5s ease-out;
+        }
+        /* Botones animados */
+        .btn {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+  

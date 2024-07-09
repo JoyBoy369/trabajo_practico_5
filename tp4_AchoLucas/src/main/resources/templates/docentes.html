@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head data-th-replace="~{/layouts/header :: head}">
-
+    <meta charset="UTF-8">
+    <title>Título de la página</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:rel="stylesheet" type="text/css" href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <!-- Otros estilos -->
+    <style>
+        /* Estilos adicionales si es necesario */
+    </style>
 </head>
 <body>
 <div data-th-replace="~{/layouts/header :: header}"></div>
@@ -29,27 +36,37 @@
                         <p class="card-text">
                             <i class="fas fa-id-badge"></i> Legajo: <span data-th-text="${doce.legajo}"></span>
                         </p>
-                        
-                                   
-                         <p class="card-text">
+                        <hr> <!-- Línea separadora -->
+                        <p class="card-text">
                             <i class="fas fa-book"></i> Materia: <span data-th-text="${doce.materia.nombre}"></span>
-                        </p>    
-                        
-                        
-                        <p class="card-text">
-                            <i class="fas fa-envelope"></i> Correo: <span data-th-text="${doce.email}"></span>
                         </p>
-                        <p class="card-text">
-                            <i class="fas fa-phone"></i> Teléfono:  +54 <span data-th-text="${doce.telefono}"></span>
-                        </p>
-                        <a class="btn btn-warning" data-th-href="@{/docente/modificar/} + ${doce.id}">
-                            <i class="fas fa-user-edit"></i> <small class="text-muted"></small>
-                        </a>
-                        <a class="btn btn-danger" data-th-href="@{/docente/eliminar/} + ${doce.id}">
-                            <i class="fas fa-user-times"></i> <small class="text-muted"></small>
-                        </a>
+                        <hr> <!-- Línea separadora -->
+                        <!-- Botón "Ver más" -->
+                        <button class="btn btn-primary mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${doce.id}" aria-expanded="false" aria-controls="collapse${doce.id}">
+                            Ver más
+                        </button>
+
+                        <!-- Detalles adicionales ocultos -->
+                        <div class="collapse mt-3" id="collapse${doce.id}">
+                            <hr> <!-- Línea separadora -->
+                            <p class="card-text">
+                                <i class="fas fa-envelope"></i> Correo: <span data-th-text="${doce.email}"></span>
+                            </p>
+                            <hr> <!-- Línea separadora -->
+                            <p class="card-text">
+                                <i class="fas fa-phone"></i> Teléfono: +54 <span data-th-text="${doce.telefono}"></span>
+                            </p>
+                            <div class="btn-group mt-3" role="group" aria-label="Botones de acción">
+                                <a class="btn btn-warning" data-th-href="@{/docente/modificar/} + ${doce.id}">
+                                    <i class="fas fa-user-edit"></i> Editar
+                                </a>
+                                <a class="btn btn-danger" data-th-href="@{/docente/eliminar/} + ${doce.id}">
+                                    <i class="fas fa-user-times"></i> Eliminar
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     </div>
