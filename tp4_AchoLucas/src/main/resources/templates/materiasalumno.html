@@ -26,6 +26,13 @@
                 <i class="fas fa-arrow-left"></i> <small>Volver Atrás</small>
             </a>
         </div>
+		<div class="row">
+			<div class="col-md-12 mb-3 text-center" th:if="${materias.empty}">
+			    <p class="alert alert-info">El alumno <span th:text="${alumno.nombre} + ' ' + ${alumno.apellido}"></span> aún no se encuentra inscripto en ninguna materia.</p>
+			  </div>
+			  <div class="col-md-6 mb-3" th:each="mate, iterStat : ${materias}">
+			</div>
+		</div>
         <div class="row">
             <!-- Iteración sobre las materias -->
             <div class="col-md-6 mb-3" th:each="mate, iterStat : ${materias}">
