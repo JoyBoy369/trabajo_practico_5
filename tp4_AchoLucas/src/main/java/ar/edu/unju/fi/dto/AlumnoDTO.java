@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Email;
 
 @Data
 @AllArgsConstructor
@@ -33,10 +34,12 @@ public class AlumnoDTO {
 		@NotBlank(message="Debe ingresar apellido")
 	    private String apellido;
 		
-		@NotBlank(message="Debe ingresar email")
+		@Email(regexp = ".+[@].+[\\.].+", message="Debe ingresar un email valido")
+		@NotBlank(message="Este campo no puede estar vacio")
 	    private String email;
 		
 		@NotBlank(message="Debe ingresar telefono")
+		@Size(min=9, max=9, message="El número de teléfono debe de estar compuesto por 9 números.")
 	    private String telefono;	
 		
 		@NotBlank(message="Debe ingresar fecha de nacimiento")
