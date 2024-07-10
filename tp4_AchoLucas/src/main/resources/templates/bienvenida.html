@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Gestión</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #222;
+            padding: 20px;
+        }
+
+        .panel-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            font-size: 2rem;
+        }
+
+        .panel-item {
+            background: #333;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            transition: background 0.3s ease;
+            cursor: pointer;
+            position: relative; /* Para alinear iconos absolutamente */
+        }
+
+        .panel-item:hover {
+            background: #00bcd4;
+        }
+
+        .panel-item img {
+            max-width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .panel-item p {
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .panel-item .actions {
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2); /* Línea separadora */
+            padding-top: 10px; /* Espacio superior */
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Envolver en múltiples líneas si es necesario */
+        }
+
+        .panel-item .actions a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .panel-item .actions a:hover {
+            color: #00bcd4;
+        }
+
+        .panel-item .actions a i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="panel-title">Bienvenido Estimado</h1>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="panel-item" onclick="window.location.href='/docente/listado'">
+                    <img src="https://img.icons8.com/color/452/teacher.png" alt="Docente Icon">
+                    <p>Gestión de Docentes</p>
+                    <p>Administra la información de los docentes.</p>
+                    <div class="actions">
+                        <a href="#"><i class="fas fa-user-plus"></i> Crear Docente</a>
+                        <a href="#"><i class="far fa-eye"></i> Ver docente</a>
+                        <a href="#"><i class="far fa-edit"></i> Editar docente</a>
+                        <a href="#"><i class="far fa-trash-alt"></i> Eliminar docente</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="panel-item" onclick="window.location.href='/alumno/listado'">
+                    <img src="https://img.icons8.com/color/452/student-male.png" alt="Alumno Icon">
+                    <p>Gestión de Alumnos</p>
+                    <p>Administra la información de los alumnos.</p>
+                    <div class="actions">
+                        <a href="#"><i class="fas fa-user-plus"></i> Crear alumno</a>
+                        <a href="#"><i class="far fa-eye"></i> Ver alumno</a>
+                        <a href="#"><i class="far fa-edit"></i> Editar alumno</a>
+                        <a href="#"><i class="far fa-trash-alt"></i> Eliminar alumno</a>
+                        <a href="#"><i class="fas fa-user-graduate"></i> Inscribir alumno</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="panel-item" onclick="window.location.href='/carrera/listado'">
+                    <img src="https://img.icons8.com/color/452/university.png" alt="Carrera Icon">
+                    <p>Gestión de Carreras</p>
+                    <p>Administra la información de las carreras.</p>
+                    <div class="actions">
+                        <a href="#"><i class="fas fa-user-plus"></i> Crear carrera</a>
+                        <a href="#"><i class="far fa-eye"></i> Ver carrera</a>
+                        <a href="#"><i class="far fa-edit"></i> Editar carrera</a>
+                        <a href="#"><i class="far fa-trash-alt"></i> Eliminar carrera</a>
+                        <a href="#"><i class="fas fa-users"></i> Consultar Alumnos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="panel-item" onclick="window.location.href='/materia/listado'">
+                    <img src="https://img.icons8.com/color/452/book.png" alt="Materia Icon">
+                    <p>Gestión de Materias</p>
+                    <p>Administra la información de las materias.</p>
+                    <div class="actions">
+                        <a href="#"><i class="fas fa-user-plus"></i> Crear materia</a>
+                        <a href="#"><i class="far fa-eye"></i> Ver materia</a>
+                        <a href="#"><i class="far fa-edit"></i> Editar materia</a>
+                        <a href="#"><i class="far fa-trash-alt"></i> Eliminar materia</a>
+                        <a href="#"><i class="fas fa-users"></i> Consultar Alumnos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
