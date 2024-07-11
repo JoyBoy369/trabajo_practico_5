@@ -44,11 +44,16 @@
 			</div>
 
 			<div class="form-group">
-				<label for="nombre">Curso:</label> <input type="text"
-					class="form-control" id="curso" th:field="*{curso}" th:classappend="${#fields.hasErrors('curso')} ? 'is-invalid' : ''">
-					<p class="form-text text-danger" th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}"></p>
+				<label for="nombre">Curso:</label> <select id="curso" th:field="*{curso}" class="form-control">
+					<option value="1ro" th:text="1ro"></option>
+					<option value="2do" th:text="2do"></option>
+					<option value="3ro" th:text="3ro"></option>
+					<option value="4to" th:text="4to"></option>
+					<option value="5to" th:text="5to"></option>
+					<option value="6to" th:text="6to"></option>
+					<option value="7mo" th:text="7mo"></option>
+				</select>
 			</div>
-
 			<div class="form-group">
 				<label for="duracion">Carga Horaria:</label> <input type="number"
 					class="form-control" id="duracion" th:field="*{cantidadHoras}"	th:classappend="${#fields.hasErrors('cantidadHoras')} ? 'is-invalid' : ''" maxlength="4"

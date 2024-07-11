@@ -22,6 +22,13 @@
        <a class="btn btn-info" href="/carrera/listado">
                 <i class="fas fa-arrow-left"></i> <small>Volver Atrás</small>
             </a>
+		<div class="row">
+			<div class="col-md-12 mb-3 text-center" th:if="${alumnos.empty}">
+				 <p class="alert alert-info">La carrera <span th:text="${carrera.nombre}"></span> no tiene alumnos inscriptos.</p>
+			 </div>
+			  <div class="col-md-6 mb-3" th:each="mate, iterStat : ${alumnos}">
+			</div>
+		</div>
         <div class="row">
             <!-- Iteración sobre los alumnos -->
             <div class="col-md-6 mb-3" th:each="alu, iterStat : ${alumnos}">
