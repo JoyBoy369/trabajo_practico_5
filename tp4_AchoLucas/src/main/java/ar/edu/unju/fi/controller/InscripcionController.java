@@ -55,23 +55,29 @@ public class InscripcionController {
 
 	
 	@GetMapping("/alumno/{aluId}/materia/{matId}")
-	public ModelAndView getRegistrarAlumno(@PathVariable(value="aluId")Long aluId,@PathVariable(value="matId")Long matId, Model model) {
-		
-		Alumno alumnoEncontrado = alumnoMapper.toAlumno(alumnoService.getAlumnoById(aluId));
-		
-		Materia materia= materiaMapper.toMateria(materiaService.findById(matId));
-		
-		materia.getAlumnos().add(alumnoEncontrado);
-		
-		materiaService.save(materiaMapper.toMateriaDTO(materia));
-		
-		model.addAttribute("alumnos", alumnoService.getAllAlumnos());
-        model.addAttribute("titulo", "Alumnos");
-		
-		ModelAndView modelView = new ModelAndView("alumnos");
-		
-		return modelView;
-		
+	public ModelAndView getRegistrarAlumno(@PathVariable(value="aluId") Long aluId, @PathVariable(value="matId") Long matId, Model model) {
+	    Alumno alumnoEncontrado = alumnoMapper.toAlumno(alumnoService.getAlumnoById(aluId));
+	    Materia materia = materiaMapper.toMateria(materiaService.findById(matId));
+	    
+	    // Validar si el alumno ya está registrado en la materia
+	    if (materia.getAlumnos().contains(alumnoEncontrado)) {
+	        model.addAttribute("registroExitoso", false); // No se registra porque ya está registrado
+	        model.addAttribute("mensajeModal", "El alumno ya está registrado en esta materia.");
+	    } else {
+	    	
+	        materia.getAlumnos().add(alumnoEncontrado);
+	        materiaService.save(materiaMapper.toMateriaDTO(materia));
+	       
+	    }
+	    
+
+	    AlumnoDTO alumno = alumnoService.getAlumnoById(aluId);
+	    model.addAttribute("alumno", alumno);
+	    model.addAttribute("materias", alumno.getMaterias());
+	    model.addAttribute("titulo", "Materias del Alumno");
+
+	    ModelAndView modelView = new ModelAndView("materiasalumno");
+	    return modelView;
 	}
 
 

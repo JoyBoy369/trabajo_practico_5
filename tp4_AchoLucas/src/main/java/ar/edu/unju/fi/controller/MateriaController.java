@@ -91,7 +91,7 @@ public class MateriaController {
 	
 		model.addAttribute("editar", editar);
 		model.addAttribute("materia", materiaEncontradaDTO);
-		model.addAttribute("docentes",docenteService.getDocentesNoAsignados()); 
+		model.addAttribute("docentes",docenteService.getDocentes()); 
 		model.addAttribute("carreras",carreraService.findAll());	
 		model.addAttribute("titulo", "Modificar Carrera");		
 		
