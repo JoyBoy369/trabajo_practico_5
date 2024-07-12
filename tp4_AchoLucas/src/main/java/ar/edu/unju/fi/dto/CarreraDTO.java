@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Max;
+
 
 @Data
 @AllArgsConstructor
@@ -31,6 +33,7 @@ public class CarreraDTO {
 	
 	@NotBlank
 	@Size(max=1, message="La cantidad de años no puede superar una cifra.")
+	@Max(value = 7, message="La carrera no puede durar más de 7 años")
     private String cantidadAnios;
     private String estado;
     

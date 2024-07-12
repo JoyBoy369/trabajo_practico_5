@@ -53,7 +53,8 @@
             
             <div class="form-group">
                 <label for="nombre">Telefono:</label>
-                <input type="number" class="form-control" id="telefono" th:field="*{telefono}" th:classappend="${#fields.hasErrors('telefono')} ? 'is-invalid' : ''">
+                <input type="number" class="form-control" id="telefono" th:field="*{telefono}" th:classappend="${#fields.hasErrors('telefono')} ? 'is-invalid' : ''" maxlength="9"
+				minlength="9" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 				<p class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></p>
             </div>
             

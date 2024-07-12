@@ -53,15 +53,18 @@ public class AlumnoController {
     }
     
     @PostMapping("/guardar")
-    public ModelAndView guardarAlumno(@Valid @ModelAttribute("alumno") AlumnoDTO alumnoDTO, BindingResult result) {
+    public ModelAndView guardarAlumno(@Valid @ModelAttribute("alumno") AlumnoDTO alumnoDTO, BindingResult result, Model model) {
         ModelAndView modelView;
+        boolean editar = false;
         if (result.hasErrors()) {
         	modelView = new ModelAndView("formularioalumno");
+        	model.addAttribute("carreras",carreraService.findAll());
+            model.addAttribute("titulo", "Nuevo Alumno");
+            model.addAttribute("editar", editar);
         }else {
         	modelView = new ModelAndView("redirect:/alumno/listado");
         	alumnoService.saveAlumno(alumnoDTO);
         }
-        
         return modelView;
     }
     
@@ -82,6 +85,7 @@ public class AlumnoController {
     	if(result.hasErrors()) {
     		model.addAttribute("editar", editar);
             model.addAttribute("titulo", "Modificar Alumno");
+            model.addAttribute("carreras",carreraService.findAll());
     		return "formularioalumno";
     	}else {
     		alumnoService.updateAlumno(alumnoDTO);

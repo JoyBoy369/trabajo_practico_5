@@ -36,11 +36,11 @@
                         <p class="card-text">
                             <i class="fas fa-id-badge"></i> Legajo: <span data-th-text="${doce.legajo}"></span>
                         </p>
+                         <p class="card-text">
+                                <i class="fas fa-envelope"></i> Correo: <span data-th-text="${doce.email}"></span>
+                            </p>
                         <hr> <!-- Línea separadora -->
-                        <p class="card-text">
-                            <i class="fas fa-book"></i> Materia: <span data-th-text="${doce.materia.nombre}"></span>
-                        </p>
-                        <hr> <!-- Línea separadora -->
+                       
                         <!-- Botón "Ver más" -->
                         <button class="btn btn-primary mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${doce.id}" aria-expanded="false" aria-controls="collapse${doce.id}">
                             Ver más
@@ -49,9 +49,7 @@
                         <!-- Detalles adicionales ocultos -->
                         <div class="collapse mt-3" id="collapse${doce.id}">
                             <hr> <!-- Línea separadora -->
-                            <p class="card-text">
-                                <i class="fas fa-envelope"></i> Correo: <span data-th-text="${doce.email}"></span>
-                            </p>
+                           
                             <hr> <!-- Línea separadora -->
                             <p class="card-text">
                                 <i class="fas fa-phone"></i> Teléfono: +54 <span data-th-text="${doce.telefono}"></span>
