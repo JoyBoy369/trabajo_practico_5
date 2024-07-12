@@ -30,7 +30,7 @@ public class MateriaDTO {
 		@Size(min=2, max=3, message="El codigo debe de tenerr entre 2 y 3 digitos.")
 		private String codigo;
 		
-		@Size(min=2, max=20, message="El nombre debe de ser mayor a 2 caracteres y menor de 20")
+		@Size(min=2, max=30, message="El nombre debe de ser mayor a 2 caracteres y menor de 30")
 		@NotBlank(message="Debe ingresar nombre")
 	    private String nombre;
 		
